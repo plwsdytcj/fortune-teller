@@ -16,15 +16,75 @@ const state_jwt = useStorage('jwt')
 const isMobile = useIsMobile()
 const { locale } = useI18n()
 
+// Updated themeOverrides for "oriental and mysterious" style
 const themeOverrides = {
   common: {
-    primaryColor: '#16a34a', // A nice green color
-    primaryColorHover: '#15803d',
-    primaryColorPressed: '#166534',
+    primaryColor: '#8B0000', // Dark Red
+    primaryColorHover: '#A52A2A', // Brown (for a slightly lighter hover)
+    primaryColorPressed: '#6F0000', // Darker Red
+    // It's good practice to also define textColor and other relevant colors
+    // but Naive UI's darkTheme will handle many aspects.
+    // We will use global CSS for more comprehensive control.
+  },
+  Button: {
+    // Example: Define textColor for primary buttons if needed
+    // textColorPrimary: '#FFD700' // Gold text on Dark Red button
+    // This might need to be #FFFFFF or a light grey for readability
+    textColorPrimary: '#E0E0E0',
+    // textColorHoverPrimary: '#FFD700',
+    // textColorPressedPrimary: '#FFD700',
+    // textColorFocusPrimary: '#FFD700',
+
+    // For default type buttons (not primary)
+    // textColor: '#E0E0E0', // Default text color for buttons
+    // textColorHover: '#FFD700',
+    // border: "1px solid #FFD700", // Gold border for default buttons
+    // borderColorHover: "#FFD700",
+  },
+  PageHeader: {
+    titleTextColor: '#FFD700', // Gold for page titles
+    // backColor: '#FFD700' // Color for back icon
+  },
+  Spin: {
+    textColor: '#FFD700' // Gold for loading text
+  },
+  Alert: { // Default alert styling might clash, let's try to make it fit
+    titleTextColorInfo: '#E0E0E0',
+    iconColorInfo: '#FFD700',
+    contentTextColorInfo: '#E0E0E0',
+    colorInfo: '#004040', // Dark Teal background for info alerts
+    titleTextColorSuccess: '#E0E0E0',
+    iconColorSuccess: '#FFD700',
+    contentTextColorSuccess: '#E0E0E0',
+    colorSuccess: '#004040', // Dark Teal for success (can differentiate later if needed)
+    titleTextColorWarning: '#1A1A1A',
+    iconColorWarning: '#8B0000',
+    contentTextColorWarning: '#1A1A1A',
+    colorWarning: '#FFD700', // Gold background for warning, dark text
+    titleTextColorError: '#E0E0E0',
+    iconColorError: '#FFD700',
+    contentTextColorError: '#E0E0E0',
+    colorError: '#8B0000', // Dark red for error
   }
+  // Add other component overrides as needed, e.g., Card, Input, Select
 }
 
-const theme = computed(() => isDark.value ? darkTheme : null)
+// Force dark theme for our new style
+const theme = computed(() => darkTheme)
+// Watch isDark and if it becomes false, set it back to true.
+// This ensures our "oriental and mysterious" theme (which is dark) remains active.
+watch(isDark, (newVal) => {
+  if (!newVal) {
+    toggleDark(); // This will set isDark back to true
+  }
+});
+
+onMounted(() => {
+  if (!isDark.value) {
+    toggleDark(); // Ensure dark mode is on by default for this theme
+  }
+});
+
 const naiveLocale = computed(() => {
   return locale.value === 'zh' ? zhCN : enUS
 })
@@ -132,9 +192,66 @@ onMounted(async () => {
   </n-config-provider>
 </template>
 
+<style>
+/* Global styles - not scoped */
+body, #app {
+  background-color: #1A1A1A !important; /* Very Dark Grey */
+  color: #E0E0E0 !important; /* Light Grey / Off-White */
+  font-family: "Helvetica Neue", "Arial", sans-serif; /* Body font */
+
+  /* Subtle repeating pattern for background */
+  background-image:
+    linear-gradient(135deg, rgba(255,215,0,0.02) 25%, transparent 25%),
+    linear-gradient(225deg, rgba(255,215,0,0.02) 25%, transparent 25%),
+    linear-gradient(45deg, rgba(255,215,0,0.02) 25%, transparent 25%),
+    linear-gradient(315deg, rgba(255,215,0,0.02) 25%, #1A1A1A 25%);
+  background-size: 40px 40px; /* Size of the pattern */
+  background-position: 0 0, 20px 20px, 20px 20px, 0 0; /* Offset for diamond pattern */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Georgia", serif; /* Heading font */
+  color: #B8860B; /* DarkGoldenRod for headings */
+}
+
+/* Override Naive UI's default background for the config provider if necessary */
+.n-config-provider {
+  background-color: #1A1A1A !important;
+}
+
+/* Specific overrides if themeOverrides are not enough */
+.n-page-header .n-page-header__title h3 {
+  color: #FFD700 !important; /* Gold for page title - ensuring it overrides */
+  font-family: "Georgia", serif;
+}
+
+/* Making sure buttons in the header also adopt the new style */
+.n-page-header .n-button {
+  /* Default button styling - can be refined */
+  /* background-color: transparent !important; */
+  /* border: 1px solid #FFD700 !important; */
+  /* color: #FFD700 !important; */
+}
+
+.n-page-header .n-button:hover {
+  /* background-color: #8B0000 !important; */
+  /* color: #FFD700 !important; */
+}
+
+/* Custom styling for the main content area if needed */
+.main {
+  /* background-color: #2C2C2C; */ /* Slightly lighter shade for content background if desired */
+  /* padding: 20px; */ /* Add some padding */
+  /* border: 1px solid #FFD700; */ /* Example border */
+}
+
+</style>
+
 <style scoped>
+/* Scoped styles remain for component-specific layout */
 .side {
   height: 100vh;
+  /* background-color: #101010; */ /* Slightly different background for side ads if desired */
 }
 
 .main {
@@ -157,5 +274,6 @@ onMounted(async () => {
 .n-alert {
   text-align: center;
   margin-bottom: 10px;
+  /* Naive UI theme overrides should handle alert styling, but can add more here if needed */
 }
 </style>
