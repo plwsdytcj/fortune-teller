@@ -20,9 +20,7 @@ client = OpenAI(api_key=settings.api_key, base_url=settings.api_base)
 router = APIRouter()
 _logger = logging.getLogger(__name__)
 STOP_WORDS = [
-    "忽略", "ignore", "指令", "命令", "command", "help", "帮助", "之前",
-    "幫助", "現在", "開始", "开始", "start", "restart", "重新开始", "重新開始",
-    "遵守", "遵循", "遵从", "遵從"
+    "ignore", "command", "help", "start", "restart",
 ]
 
 
@@ -77,7 +75,7 @@ async def divination(
     if not (settings.api_base or custom_base_url) or not (settings.api_key or custom_api_key):
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
-            detail="请设置 API KEY 和 API BASE URL"
+            detail="Please set API KEY and API BASE URL in settings"
         )
 
     def get_openai_generator():

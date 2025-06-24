@@ -2,10 +2,9 @@ import datetime
 from src.models import DivinationBody
 from .base import DivinationFactory
 
-BIRTHDAY_PROMPT = "我请求你担任中国传统的生辰八字算命的角色。" \
-    "我将会给你我的生日，请你根据我的生日推算命盘，" \
-    "分析五行属性、吉凶祸福、财运、婚姻、健康、事业等方面的情况，" \
-    "并为其提供相应的指导和建议。"
+BIRTHDAY_PROMPT = "I request you to act as a traditional Chinese Bazi (Eight Characters of Birth) fortune teller. " \
+    "I will provide you with my birthday, and you should calculate my Bazi chart based on it, " \
+    "analyzing aspects such as the five elements, fortune, wealth, marriage, health, and career."
 
 
 class BirthdayFactory(DivinationFactory):
@@ -16,8 +15,8 @@ class BirthdayFactory(DivinationFactory):
         return self.internal_build_prompt(divination_body.birthday)
 
     def internal_build_prompt(self, birthday: str) -> tuple[str, str]:
-        birthday = datetime.datetime.strptime(
+        birthday_dt = datetime.datetime.strptime(
             birthday, '%Y-%m-%d %H:%M:%S'
         )
-        prompt = f"我的生日是{birthday.year}年{birthday.month}月{birthday.day}日{birthday.hour}时{birthday.minute}分{birthday.second}秒"
+        prompt = f"My birthday is {birthday_dt.year}-{birthday_dt.month}-{birthday_dt.day} {birthday_dt.hour}:{birthday_dt.minute}:{birthday_dt.second}"
         return prompt, BIRTHDAY_PROMPT

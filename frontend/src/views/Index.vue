@@ -145,103 +145,118 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div>
-    <n-tabs v-model:value="prompt_type" type="card" animated placement="top">
-      <template v-if="isMobile" #prefix>
-        <n-button @click="changeTab(-1)">←</n-button>
-      </template>
-      <template v-if="isMobile" #suffix>
-        <n-button @click="changeTab(1)">→</n-button>
-      </template>
-      <n-tab-pane v-for="option in DIVINATION_OPTIONS" :name="option.key" :tab="option.label">
-        <n-card v-if="prompt_type != 'about'">
-          <div v-if="prompt_type == 'tarot'">
-            <n-input v-model:value="prompt" type="textarea" round maxlength="40" :autosize="{ minRows: 3 }"
-              placeholder="我的财务状况如何" />
-          </div>
-          <div v-if="prompt_type == 'birthday'">
-            <div style="display: inline-block; text-align: left;">
-              <n-form-item label="生日" label-placement="left">
-                <n-date-picker v-model:formatted-value="birthday" value-format="yyyy-MM-dd HH:mm:ss" type="datetime" />
-              </n-form-item>
-              <n-form-item label="农历" label-placement="left">
-                <p>{{ lunarBirthday }}</p>
-              </n-form-item>
+  <div class="m-8">
+    <div class="text-3xl mb-2 font-bold">{{ $t('message.divination_types') }}</div>
+    <div class="text-gray-500 mb-4">{{ $t('message.select_a_type') }}</div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      <n-tabs v-model:value="prompt_type" type="card" animated placement="top">
+        <template v-if="isMobile" #prefix>
+          <n-button @click="changeTab(-1)">←</n-button>
+        </template>
+        <template v-if="isMobile" #suffix>
+          <n-button @click="changeTab(1)">→</n-button>
+        </template>
+        <n-tab-pane v-for="option in DIVINATION_OPTIONS" :name="option.key" :tab="option.label">
+          <n-card v-if="prompt_type != 'about'" class="bg-slate-50 shadow-sm hover:shadow-lg transition-shadow rounded-lg">
+            <div v-if="prompt_type == 'tarot'">
+              <n-input v-model:value="prompt" type="textarea" round maxlength="40" :autosize="{ minRows: 3 }"
+                :placeholder="$t('message.tarot_prompt_placeholder')" />
             </div>
-          </div>
-          <div v-if="prompt_type == 'new_name'">
-            <div style="display: inline-block;">
-              <n-form-item label="姓氏" label-placement="left">
-                <n-input v-model:value="surname" type="text" maxlength="2" placeholder="请输入姓氏" />
-              </n-form-item>
-              <n-form-item label="性别" label-placement="left">
-                <n-select v-model:value="sex" :options="sexOptions" />
-              </n-form-item>
-              <n-form-item label="生日" label-placement="left">
-                <n-date-picker v-model:formatted-value="birthday" value-format="yyyy-MM-dd HH:mm:ss" type="datetime" />
-              </n-form-item>
-              <n-form-item label="附加" label-placement="left">
-                <n-input v-model:value="new_name_prompt" type="text" maxlength="20" placeholder="" />
-              </n-form-item>
-              <p>农历: {{ lunarBirthday }}</p>
+            <div v-if="prompt_type == 'horoscope'">
+              <n-select v-model:value="prompt" :options="[
+                { label: 'Aries', value: 'Aries' }, { label: 'Taurus', value: 'Taurus' },
+                { label: 'Gemini', value: 'Gemini' }, { label: 'Cancer', value: 'Cancer' },
+                { label: 'Leo', value: 'Leo' }, { label: 'Virgo', value: 'Virgo' },
+                { label: 'Libra', value: 'Libra' }, { label: 'Scorpio', value: 'Scorpio' },
+                { label: 'Sagittarius', value: 'Sagittarius' }, { label: 'Capricorn', value: 'Capricorn' },
+                { label: 'Aquarius', value: 'Aquarius' }, { label: 'Pisces', value: 'Pisces' }
+              ]" />
             </div>
-          </div>
-          <div v-if="prompt_type == 'name'">
-            <div style="display: inline-block;">
-              <n-input v-model:value="prompt" type="text" maxlength="10" round placeholder="请输入姓名" />
-            </div>
-          </div>
-          <div v-if="prompt_type == 'dream'">
-            <n-input v-model:value="prompt" type="textarea" round maxlength="40" :autosize="{ minRows: 3 }"
-              placeholder="请输入你的梦境" />
-          </div>
-          <div v-if="prompt_type == 'plum_flower'">
-            <div style="display: inline-block;">
-              <h4>请随机输入两个 0-1000 的数字</h4>
-              <n-form-item label="数字一" label-placement="left">
-                <n-input-number v-model:value="plum_flower.num1" :min="0" :max="1000" />
-              </n-form-item>
-              <n-form-item label="数字二" label-placement="left">
-                <n-input-number v-model:value="plum_flower.num2" :min="0" :max="1000" />
-              </n-form-item>
-            </div>
-          </div>
-          <div v-if="prompt_type == 'fate'">
-            <div style="display: inline-block;">
-              <h4>缘分是天定的，幸福是自己的。</h4>
-              <p>想知道你和 ta 有没有缘分呢，编辑“姓名1” “姓名2”，然后点击“一键预测”。</p>
-              <p>如郭靖 黄蓉，然后点击一键预测。 就能查看你和 ta 的缘分了。</p>
-              <n-form-item label="姓名1" label-placement="left">
-                <n-input v-model:value="fate_body.name1" round maxlength="40" />
-              </n-form-item>
-              <n-form-item label="姓名2" label-placement="left">
-                <n-input v-model:value="fate_body.name2" round maxlength="40" />
-              </n-form-item>
-              <div class="footer" style="text-align:center">
-                <p>
-                  <a href="https://github.com/alongLFB/alonglfb.github.io/blob/master/images/wechatpay.png"
-                    style="text-decoration: underline;" target="_blank">请作者喝杯咖啡</a> - 🤗 Along Li
-                </p>
+            <div v-if="prompt_type == 'birthday'">
+              <div style="display: inline-block; text-align: left;">
+                <n-form-item :label="$t('message.birthday')" label-placement="left">
+                  <n-date-picker v-model:formatted-value="birthday" value-format="yyyy-MM-dd HH:mm:ss" type="datetime" />
+                </n-form-item>
+                <n-form-item :label="$t('message.lunar_date')" label-placement="left">
+                  <p>{{ lunarBirthday }}</p>
+                </n-form-item>
               </div>
             </div>
-          </div>
-          <div v-if="menu_type != 'about'" class="button-container">
-            <n-button class="button" @click="showDrawer = !showDrawer" tertiary type="primary">
-              {{ loading ? "点击打开占卜结果页面" : "查看占卜结果" }}
-            </n-button>
-            <n-button class="button" @click="onSubmit" type="primary" :disabled="loading">
-              {{ loading ? "正在占卜中..." : "占卜" }}
-            </n-button>
-          </div>
-        </n-card>
-      </n-tab-pane>
-      <n-tab-pane name="about" tab="关于">
-        <About />
-      </n-tab-pane>
-    </n-tabs>
+            <div v-if="prompt_type == 'new_name'">
+              <div style="display: inline-block;">
+                <n-form-item :label="$t('message.surname')" label-placement="left">
+                  <n-input v-model:value="surname" type="text" maxlength="2" :placeholder="$t('message.surname')" />
+                </n-form-item>
+                <n-form-item :label="$t('message.gender')" label-placement="left">
+                  <n-select v-model:value="sex" :options="[{label: $t('message.male'), value: '男'}, {label: $t('message.female'), value: '女'}]" />
+                </n-form-item>
+                <n-form-item :label="$t('message.birthday')" label-placement="left">
+                  <n-date-picker v-model:formatted-value="birthday" value-format="yyyy-MM-dd HH:mm:ss" type="datetime" />
+                </n-form-item>
+                <n-form-item :label="$t('message.additional_info')" label-placement="left">
+                  <n-input v-model:value="new_name_prompt" type="text" maxlength="20" placeholder="" />
+                </n-form-item>
+                <p>{{ $t('message.lunar_date') }}: {{ lunarBirthday }}</p>
+              </div>
+            </div>
+            <div v-if="prompt_type == 'name'">
+              <div style="display: inline-block;">
+                <n-input v-model:value="prompt" type="text" maxlength="10" round :placeholder="$t('message.name')" />
+              </div>
+            </div>
+            <div v-if="prompt_type == 'dream'">
+              <n-input v-model:value="prompt" type="textarea" round maxlength="40" :autosize="{ minRows: 3 }"
+                :placeholder="$t('message.dream_prompt')" />
+            </div>
+            <div v-if="prompt_type == 'plum_flower'">
+              <div style="display: inline-block;">
+                <h4>{{ $t('message.plum_flower_prompt') }}</h4>
+                <n-form-item :label="$t('message.num1')" label-placement="left">
+                  <n-input-number v-model:value="plum_flower.num1" :min="0" :max="1000" />
+                </n-form-item>
+                <n-form-item :label="$t('message.num2')" label-placement="left">
+                  <n-input-number v-model:value="plum_flower.num2" :min="0" :max="1000" />
+                </n-form-item>
+              </div>
+            </div>
+            <div v-if="prompt_type == 'fate'">
+              <div style="display: inline-block;">
+                <h4>{{ $t('message.fate_prompt_1') }}</h4>
+                <p>{{ $t('message.fate_prompt_2') }}</p>
+                <p>{{ $t('message.fate_prompt_3') }}</p>
+                <n-form-item :label="$t('message.name1')" label-placement="left">
+                  <n-input v-model:value="fate_body.name1" round maxlength="40" :placeholder="$t('message.enter_a_name')" />
+                </n-form-item>
+                <n-form-item :label="$t('message.name2')" label-placement="left">
+                  <n-input v-model:value="fate_body.name2" round maxlength="40" :placeholder="$t('message.enter_a_name')" />
+                </n-form-item>
+                <div class="footer" style="text-align:center">
+                  <p>
+                    <a href="https://github.com/alongLFB/alonglfb.github.io/blob/master/images/wechatpay.png"
+                      style="text-decoration: underline;" target="_blank">Please buy the author a cup of coffee</a> - 🤗 Along Li
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div v-if="menu_type != 'about'" class="button-container">
+              <n-button class="button" @click="showDrawer = !showDrawer" tertiary type="primary">
+                {{ loading ? $t('message.show_result_loading') : $t('message.show_result') }}
+              </n-button>
+              <n-button class="button" @click="onSubmit" type="primary" :disabled="loading">
+                {{ loading ? $t('message.submitting') : $t('message.submit') }}
+              </n-button>
+            </div>
+          </n-card>
+        </n-tab-pane>
+        <n-tab-pane name="about" :tab="$t('message.about')">
+          <About />
+        </n-tab-pane>
+      </n-tabs>
+    </div>
     <n-drawer v-model:show="showDrawer" style="height: 80vh;" placement="bottom" :trap-focus="false"
       :block-scroll="false">
-      <n-drawer-content title="占卜结果" closable>
+      <n-drawer-content :title="$t('message.result_title')" closable>
         <div class="result" v-html="result"></div>
       </n-drawer-content>
     </n-drawer>

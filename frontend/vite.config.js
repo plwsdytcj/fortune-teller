@@ -6,6 +6,17 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: {
+    proxy: {
+      // 字符串简写写法
+      // '/foo': 'http://localhost:4567',
+      // 选项写法
+      '/api': {
+        target: 'http://localhost:8000',
+        changeOrigin: true,
+      },
+    }
+  },
   plugins: [
     vue(),
     VitePWA({

@@ -1,93 +1,97 @@
 export const DIVINATION_OPTIONS = [
     {
-        label: '塔罗牌',
+        label: 'Tarot',
         key: 'tarot',
     },
     {
-        label: '姻缘',
+        label: 'Horoscope',
+        key: 'horoscope',
+    },
+    {
+        label: 'Marriage Affinity',
         key: 'fate',
     },
     {
-        label: '生辰八字',
+        label: 'Bazi (Birthday)',
         key: 'birthday',
     },
     {
-        label: '起名',
+        label: 'Name Generator',
         key: 'new_name',
     },
     {
-        label: '姓名五格',
+        label: 'Name Analysis',
         key: 'name',
     },
     {
-        label: '周公解梦',
+        label: 'Dream Interpretation',
         key: 'dream',
     },
     {
-        label: '梅花易数',
+        label: 'Plum Blossom Divination',
         key: 'plum_flower',
     },
 ];
 
-export const ABOUT = `# 关于 & 名词解释
+export const ABOUT = `# About & Glossary
 
-## 姓名五格
+## Name Analysis (Wuge)
 
-姓名五格是一种基于姓名的命理学系统，用于分析和推测个人的性格特点、潜能、运势等。它认为每个汉字都有特定的音、义、形，通过对姓名中每个字的五行属性、音数、字义等进行综合分析，来揭示人的命运和性格。
+Name Wuge is a system of numerology based on names, used to analyze and infer an individual's personality traits, potential, fortune, etc. It believes that each Chinese character has specific sounds, meanings, and shapes. By comprehensively analyzing the five-element attributes, sound numbers, and meanings of each character in a name, it aims to reveal a person's destiny and character.
 
-姓名五格通常包括以下几个要素：
+Name Wuge usually includes the following elements:
 
-- 姓名的五行属性：每个字都有对应的五行属性（木、火、土、金、水），通过分析姓名中每个字的五行属性及其相互关系，推断个人的五行特征和命理属性。
+- The five-element attributes of the name: Each character corresponds to one of the five elements (Wood, Fire, Earth, Metal, Water). By analyzing the attributes of each character and their relationships, one's five-element characteristics and numerological attributes are inferred.
 
-- 音数：每个汉字都有对应的音数，即字的发音。根据姓名中每个字的音数，结合五行属性进行分析，推测个人的气场、性格倾向等。
+- Sound numbers: Each Chinese character has a corresponding sound number, i.e., its pronunciation. Based on the sound numbers of each character in the name, combined with the five-element attributes, one's aura, personality tendencies, etc., are inferred.
 
-- 字义：每个汉字都有独特的字义，即字的含义。通过分析姓名中每个字的字义，可以了解个人的个性、才能、命运走势等方面的特点。
+- Character meanings: Each Chinese character has a unique meaning. By analyzing the meaning of each character in the name, one can understand aspects of an individual's personality, talents, and life path.
 
-- 五格相生相克：根据五行相生相克的原理，分析姓名中字的相生相克关系，推断个人的五行平衡度和命运趋势。
+- The interplay of the five elements: Based on the principles of mutual generation and overcoming of the five elements, the relationships between characters in a name are analyzed to infer one's five-element balance and destiny trends.
 
-基于以上要素，姓名五格系统可以提供一些关于个人性格、潜能、事业、婚姻、健康等方面的推测和指导。然而，需要注意的是，姓名五格只是命理学的一种方法，它并不能完全决定一个人的命运，人的成长和发展还受到多种其他因素的影响，如个人的努力、环境等。因此，对于姓名五格的解读，可以作为参考和思考的一部分，但并不是唯一的决定因素。
+Based on the above elements, the Name Wuge system can provide some predictions and guidance regarding personal character, potential, career, marriage, health, etc. However, it should be noted that Name Wuge is just one method of numerology and does not completely determine a person's destiny. Personal growth and development are also influenced by various other factors, such as individual effort and environment. Therefore, the interpretation of Name Wuge can be taken as a reference and part of self-reflection, but it is not the sole determinant.
 
-## 梅花易数
+## Plum Blossom Divination (Meihua Yishu)
 
-梅花易数，也被称为梅花课，是中国古代的一种占卜方法，用于预测未来的情况或获取对事物的洞察。它是基于易经的原理和符号体系，并结合了数学计算、象征意义和直观感知等元素。
+Plum Blossom Divination, also known as Meihua Yi Shu, is an ancient Chinese method of divination used to predict future situations or gain insight into matters. It is based on the principles and symbolic system of the I Ching, combined with mathematical calculations, symbolic meanings, and intuitive perception.
 
-梅花易数的核心是八卦和六十四卦的应用。八卦是易经中的基本符号，由三个连续的爻线组成，每个爻线可以是阳爻（实线）或阴爻（虚线）。六十四卦是由八卦的各种组合形成的，每个卦象都具有特定的含义和象征。
+The core of Plum Blossom Divination is the application of the eight trigrams and sixty-four hexagrams. The eight trigrams are the basic symbols in the I Ching, composed of three continuous lines, each of which can be a yang line (solid) or a yin line (broken). The sixty-four hexagrams are formed by various combinations of the eight trigrams, with each hexagram having a specific meaning and symbolism.
 
-在梅花易数中，通过抛掷三枚硬币或使用梅花签等方式，得到一个具体的卦象，然后根据卦象的含义和相关的解释进行解读和分析。这包括卦象的上下卦、爻辞、彖象等内容，以及与个人问题或事物相关联的其他因素。
+In Plum Blossom Divination, a specific hexagram is obtained by tossing three coins or using plum blossom sticks. The interpretation and analysis are then carried out based on the meaning of the hexagram and related explanations. This includes the upper and lower trigrams of the hexagram, the line statements, the judgment, and other factors related to the individual's question or matter.
 
-梅花易数被认为是一种超越时间和空间的智慧系统，可以帮助人们了解自己和周围世界的变化，并提供一种思考和决策的方法。它在历史上广泛应用于预测、决策、命理等方面，被视为一种神秘而有用的工具。然而，解读梅花易数需要一定的学习和实践，通常由梅花易数的专家或者经验丰富的人来进行。
+Plum Blossom Divination is considered a wisdom system that transcends time and space, helping people understand the changes in themselves and the world around them, and providing a method for thinking and decision-making. It has been widely used in history for prediction, decision-making, and numerology, and is regarded as a mystical and useful tool. However, interpreting Plum Blossom Divination requires a certain amount of study and practice, and is usually done by experts or experienced individuals.
 
-## 周公解梦
+## Dream Interpretation (Zhougong Jiemeng)
 
-周公解梦是古代中国的一种解梦方法，相传源于周公旦（姬旦），是西周时期的著名政治家和周朝的创立者之一。根据传说，周公旦具有解梦的能力，他能够解读人们在睡梦中所见到的各种象征和意象，并给予相应的解释和指导。
+Zhougong Jiemeng (Duke of Zhou's Interpretation of Dreams) is an ancient Chinese method of dream interpretation, traditionally attributed to the Duke of Zhou (Ji Dan), a famous statesman of the Western Zhou Dynasty and one of its founders. According to legend, the Duke of Zhou had the ability to interpret dreams, understanding the various symbols and images people saw in their sleep and providing corresponding explanations and guidance.
 
-周公解梦的理论基础是根据梦境中的符号、情节、动作等来推测梦的含义和预示，认为梦境是人的内心活动和潜意识的表达。根据不同的梦境内容，周公解梦给出了相应的解释和预测，帮助人们理解梦境中的信息，以及对未来的一些暗示。
+The theoretical basis of Zhougong Jiemeng is to infer the meaning and omens of dreams based on the symbols, plots, and actions within them, believing that dreams are expressions of a person's inner activities and subconscious. According to different dream contents, Zhougong Jiemeng provides corresponding explanations and predictions, helping people understand the information in their dreams and some hints about the future.
 
-周公解梦在古代中国的文化中有着重要的地位，被广泛应用于各个领域，包括政治、官场、军事、家庭生活等。人们常常通过周公解梦来寻求对未来的预测和指导，以及对自己内心深处的追求和疑问的解答。
+Zhougong Jiemeng held an important position in ancient Chinese culture and was widely used in various fields, including politics, officialdom, military, and family life. People often sought predictions and guidance for the future through Zhougong Jiemeng, as well as answers to their inner pursuits and questions.
 
-然而，需要注意的是，周公解梦属于民间迷信范畴，其解释和预测并没有科学依据，仅供娱乐和参考之用。梦境的解读还需要结合个人的具体情境和经历，不能过分依赖解梦结果对自己的决策和行为产生影响。
+However, it should be noted that Zhougong Jiemeng falls into the category of folk superstition, and its explanations and predictions have no scientific basis, serving only for entertainment and reference. The interpretation of dreams also needs to be combined with an individual's specific situation and experiences, and one should not excessively rely on dream interpretation results to influence one's decisions and actions.
 
-## 塔罗牌
+## Tarot Cards
 
-塔罗牌（Tarot Cards）是一种起源于欧洲的占卜工具，常用于预测未来、探索内心和提供指导。它由一副包含78张卡牌的牌组组成，每张牌都有特定的图案和象征意义。
+Tarot cards are a tool of divination originating from Europe, often used for predicting the future, exploring the inner self, and providing guidance. It consists of a deck of 78 cards, each with a specific pattern and symbolic meaning.
 
-塔罗牌最早被认为起源于15世纪的意大利，最初并非用于占卜，而是用作纸牌游戏。然而，随着时间的推移，人们开始将其用于占卜和心灵探索。塔罗牌在18世纪末和19世纪初逐渐流行起来，成为心灵和神秘主义领域的重要工具。
+Tarot cards are believed to have originated in 15th-century Italy, initially not for divination but as a card game. However, over time, people began to use them for divination and spiritual exploration. Tarot cards gradually became popular in the late 18th and early 19th centuries, becoming an important tool in the spiritual and mystical fields.
 
-一副标准的塔罗牌包含两个主要部分：大阿卡纳（Major Arcana）和小阿卡纳（Minor Arcana）。大阿卡纳由22张牌组成，每张牌都代表着不同的象征和主题，如命运、力量、正义等。小阿卡纳则包含56张牌，分为四个花色，分别是权杖、圣杯、宝剑和金币，每个花色包含10张数值牌和4张面值牌。
+A standard deck of Tarot cards consists of two main parts: the Major Arcana and the Minor Arcana. The Major Arcana consists of 22 cards, each representing different symbols and themes, such as fate, strength, and justice. The Minor Arcana contains 56 cards, divided into four suits: Wands, Cups, Swords, and Pentacles, with each suit containing 10 numbered cards and 4 court cards.
 
-使用塔罗牌进行占卜时，占卜者通常会根据提问者的问题或者目的，从牌组中抽取一定数量的牌，并根据牌面的象征意义进行解读。每张牌都有独特的含义，结合占卜者的直觉和经验，可以提供对过去、现在和未来的洞察，以及对个人内在世界的反思和指导。
+When using Tarot cards for divination, the diviner usually draws a certain number of cards from the deck based on the querent's question or purpose and interprets them according to the symbolic meaning of the cards. Each card has a unique meaning, and combined with the diviner's intuition and experience, it can provide insights into the past, present, and future, as well as reflections and guidance on one's inner world.
 
-需要注意的是，塔罗牌不是预测命运的工具，而是提供了一种反思和指导的方式。占卜的结果和解读可以因个人的解读角度、经验和直觉而有所不同。因此，使用塔罗牌时应持有开放的心态，将其作为一个工具来启发思考和探索内心世界，而不是将其作为绝对真理。
+It is important to note that Tarot cards are not a tool for predicting destiny but offer a way for reflection and guidance. The results and interpretations of a divination can vary depending on the individual's perspective, experience, and intuition. Therefore, when using Tarot cards, one should maintain an open mind and use them as a tool to inspire thought and explore the inner world, rather than treating them as absolute truth.
 
-## 生辰八字
+## Bazi (Eight Characters of Birth)
 
-生辰八字测算是一种中华民族传统的命理学方法，也称为八字命理或八字算命。它基于农历出生日期和时间，通过八个字来揭示个人的命运、性格特点和吉凶运势等信息。
+Bazi calculation is a traditional Chinese numerology method, also known as Eight-Character numerology or Bazi fortune-telling. It is based on the lunar birth date and time, using eight characters to reveal information about an individual's destiny, personality traits, and fortune.
 
-八字指的是年、月、日、时四个单位的天干和地支。天干由十个干支（甲、乙、丙、丁、戊、己、庚、辛、壬、癸）组成，地支由十二个生肖（鼠、牛、虎、兔、龙、蛇、马、羊、猴、鸡、狗、猪）组成。根据出生年份的天干地支，可以推算出对应的年柱；根据出生月、日、时的天干地支，可以推算出对应的月柱、日柱和时柱。
+The eight characters refer to the Heavenly Stems and Earthly Branches of the four units: year, month, day, and hour. The ten Heavenly Stems are Jia, Yi, Bing, Ding, Wu, Ji, Geng, Xin, Ren, Gui. The twelve Earthly Branches are represented by the twelve zodiac animals (Rat, Ox, Tiger, Rabbit, Dragon, Snake, Horse, Goat, Monkey, Rooster, Dog, Pig). The year pillar is derived from the Heavenly Stem and Earthly Branch of the birth year; the month, day, and hour pillars are derived from their respective Heavenly Stems and Earthly Branches.
 
-生辰八字的过程涉及到天干地支的相应计算和推算方法。一旦生成了八字，就可以根据八字的组合和相互关系，结合命理学理论，进行测算和解读。通过分析八字的五行属性、阴阳平衡、天干地支的相生相克关系等，可以推断出个人的命运走势、事业发展、婚姻状况、健康状况等方面的特点和趋势。
+The process of generating the Bazi involves corresponding calculations and derivations of the Heavenly Stems and Earthly Branches. Once the Bazi is generated, it can be calculated and interpreted based on the combination and interplay of the eight characters, combined with numerological theory. By analyzing the five-element attributes of the Bazi, the yin-yang balance, and the generating and overcoming relationships of the Heavenly Stems and Earthly Branches, one can infer characteristics and trends in an individual's life path, career development, marital status, health, etc.
 
-生辰八字和进行八字测算通常需要借助专业的命理学软件、书籍或请教命理师。同时，八字测算是一门复杂的学问，需要深入的学习和实践才能准确解读和理解。因此，在进行八字测算时，建议寻求专业人士的指导和解读，以获取更准确的结果和指导。
-`
+Bazi calculation usually requires professional numerology software, books, or consultation with a numerologist. At the same time, Bazi is a complex field of study that requires in-depth learning and practice for accurate interpretation and understanding. Therefore, when undergoing a Bazi reading, it is advisable to seek the guidance and interpretation of a professional to obtain more accurate results and guidance.
+`;
 
 export default {}

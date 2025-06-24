@@ -1,18 +1,36 @@
 <script setup>
 import {
   NGrid, NGi, NSpace, NAlert, NButton, NMessageProvider, NPageHeader,
-  NConfigProvider, NGlobalStyle, NBackTop, zhCN, darkTheme, NSpin
+  NConfigProvider, NGlobalStyle, NBackTop, zhCN, darkTheme, NSpin, enUS, dateEnUS, dateZhCN
 } from 'naive-ui'
 import { onMounted, ref, computed } from "vue";
 import { useRouter } from 'vue-router'
 import { useStorage } from '@vueuse/core'
 import { useIsMobile } from './utils/composables'
 import { useGlobalState } from './store'
+import LanguageSwitcher from './components/LanguageSwitcher.vue';
+import { useI18n } from 'vue-i18n'
 
 const { isDark, toggleDark } = useGlobalState()
 const state_jwt = useStorage('jwt')
 const isMobile = useIsMobile()
+const { locale } = useI18n()
+
+const themeOverrides = {
+  common: {
+    primaryColor: '#16a34a', // A nice green color
+    primaryColorHover: '#15803d',
+    primaryColorPressed: '#166534',
+  }
+}
+
 const theme = computed(() => isDark.value ? darkTheme : null)
+const naiveLocale = computed(() => {
+  return locale.value === 'zh' ? zhCN : enUS
+})
+const naiveDateLocale = computed(() => {
+  return locale.value === 'zh' ? dateZhCN : dateEnUS
+})
 
 const router = useRouter()
 const settings = ref({});
@@ -58,10 +76,11 @@ onMounted(async () => {
 </script>
 
 <template>
-  <n-config-provider :locale="zhCN" :theme="theme">
+  <n-config-provider :theme="theme" :theme-overrides="themeOverrides" :locale="naiveLocale" :date-locale="naiveDateLocale">
     <n-spin description="加载中..." :show="loading">
       <n-global-style />
       <n-message-provider>
+        <LanguageSwitcher />
         <n-grid :x-gap="12" :cols="isMobile ? 4 : 6">
           <n-gi :span="1">
             <div class="side" v-if="showAd">
@@ -71,9 +90,9 @@ onMounted(async () => {
           </n-gi>
           <n-gi :span="4">
             <div class="main">
-              <n-page-header :subtitle="isMobile ? '' : '本项目仅供娱乐'">
+              <n-page-header :subtitle="isMobile ? '' : ''">
                 <template #title>
-                  <h3>AI 占卜</h3>
+                  <h3>Chinese Fortune Teller</h3>
                 </template>
                 <template #extra>
                   <n-space>
@@ -81,14 +100,10 @@ onMounted(async () => {
                       <n-button v-if="settings.user_name" @click="logOut">登出</n-button>
                       <n-button v-else type="primary" @click="router.push('/login')">登录</n-button>
                     </div>
-                    <n-button @click="router.push('/')">主页</n-button>
-                    <n-button @click="router.push('/settings')">设置</n-button>
+                    <n-button @click="router.push('/')">Main Page</n-button>
+                    <n-button @click="router.push('/settings')">Settings</n-button>
                     <n-button @click="toggleDark()">
-                      {{ isDark ? '亮色' : '暗色' }}
-                    </n-button>
-                    <n-button type="primary" ghost tag="a" target="_blank"
-                      href="https://github.com/dreamhunter2333/chatgpt-tarot-divination">
-                      ☆ Github
+                      {{ isDark ? 'Light' : 'Dark' }}
                     </n-button>
                   </n-space>
                 </template>
