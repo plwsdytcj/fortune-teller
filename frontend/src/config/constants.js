@@ -2,96 +2,170 @@ export const DIVINATION_OPTIONS = [
     {
         label: 'Tarot',
         key: 'tarot',
+        icon: '🔮',
+        title: 'Tarot Reading',
+        description: 'Unveil your future through mystical tarot cards',
+        longDescription: 'Tarot is an ancient divination tool consisting of 78 cards, each with unique symbolic meanings. Through drawing three cards representing past, present, and future, gain deep insights and guidance for your questions.',
+        features: ['Three-card spread', 'Past, present, future', 'Detailed interpretations', 'Personal guidance'],
+        example: 'Ask questions like: "What does my financial future hold?" or "How will my love life develop?"',
+        backgroundImage: 'https://images.pexels.com/photos/6980530/pexels-photo-6980530.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        cardImages: [
+            'https://images.pexels.com/photos/6980530/pexels-photo-6980530.jpeg?auto=compress&cs=tinysrgb&w=400',
+            'https://images.pexels.com/photos/8134848/pexels-photo-8134848.jpeg?auto=compress&cs=tinysrgb&w=400',
+            'https://images.pexels.com/photos/8134849/pexels-photo-8134849.jpeg?auto=compress&cs=tinysrgb&w=400'
+        ]
     },
     {
         label: 'Horoscope',
         key: 'horoscope',
+        icon: '⭐',
+        title: 'Daily Horoscope',
+        description: 'Discover your daily fortune based on your zodiac sign',
+        longDescription: 'Horoscope divination is based on celestial influences on human personality and destiny. Select your zodiac sign to receive today\'s predictions and advice for love, career, and health.',
+        features: ['12 zodiac signs', 'Daily predictions', 'Love, career, health', 'Practical advice'],
+        example: 'Choose your sign: Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, or Pisces',
+        backgroundImage: 'https://images.pexels.com/photos/1252890/pexels-photo-1252890.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        cardImages: [
+            'https://images.pexels.com/photos/1252890/pexels-photo-1252890.jpeg?auto=compress&cs=tinysrgb&w=400',
+            'https://images.pexels.com/photos/2156881/pexels-photo-2156881.jpeg?auto=compress&cs=tinysrgb&w=400',
+            'https://images.pexels.com/photos/1274260/pexels-photo-1274260.jpeg?auto=compress&cs=tinysrgb&w=400'
+        ]
     },
     {
-        label: 'Marriage Affinity',
+        label: 'Marriage Compatibility',
         key: 'fate',
+        icon: '💕',
+        title: 'Love Compatibility',
+        description: 'Test the romantic compatibility between two people',
+        longDescription: 'Love compatibility analysis is a traditional method of assessing romantic potential between two people. By analyzing names, predict the depth of connection and relationship development.',
+        features: ['Name compatibility', 'Relationship analysis', 'Love predictions', 'Entertainment value'],
+        example: 'Enter two names like "John Smith" and "Jane Doe" to see your compatibility',
+        backgroundImage: 'https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        cardImages: [
+            'https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=400',
+            'https://images.pexels.com/photos/1024994/pexels-photo-1024994.jpeg?auto=compress&cs=tinysrgb&w=400',
+            'https://images.pexels.com/photos/1024995/pexels-photo-1024995.jpeg?auto=compress&cs=tinysrgb&w=400'
+        ]
     },
     {
-        label: 'Bazi (Birthday)',
+        label: 'Birth Chart (Bazi)',
         key: 'birthday',
+        icon: '📅',
+        title: 'Chinese Astrology',
+        description: 'Analyze your destiny through birth date and time',
+        longDescription: 'Bazi (Eight Characters) is the core of traditional Chinese astrology. Using your birth year, month, day, and time, calculate the combination of Heavenly Stems and Earthly Branches to analyze five-element attributes.',
+        features: ['Birth chart calculation', 'Five elements analysis', 'Fortune prediction', 'Personality insights'],
+        example: 'Enter your birth date and time - the system will automatically convert to lunar calendar',
+        backgroundImage: 'https://images.pexels.com/photos/1624438/pexels-photo-1624438.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        cardImages: [
+            'https://images.pexels.com/photos/1624438/pexels-photo-1624438.jpeg?auto=compress&cs=tinysrgb&w=400',
+            'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=400',
+            'https://images.pexels.com/photos/1181316/pexels-photo-1181316.jpeg?auto=compress&cs=tinysrgb&w=400'
+        ]
     },
     {
         label: 'Name Generator',
         key: 'new_name',
+        icon: '✨',
+        title: 'Chinese Name Creator',
+        description: 'Generate auspicious names based on birth chart',
+        longDescription: 'Name generation combines traditional Bazi astrology and five-element numerology. Based on your surname, gender, and birth time, generate names that balance the five elements.',
+        features: ['Bazi-based naming', 'Five-element balance', 'Auspicious meanings', 'Detailed explanations'],
+        example: 'Enter surname "Wang", gender "Male", birth time and additional preferences',
+        backgroundImage: 'https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        cardImages: [
+            'https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=400',
+            'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=400',
+            'https://images.pexels.com/photos/1181316/pexels-photo-1181316.jpeg?auto=compress&cs=tinysrgb&w=400'
+        ]
     },
     {
         label: 'Name Analysis',
         key: 'name',
+        icon: '📜',
+        title: 'Name Numerology',
+        description: 'Analyze the numerology and meaning of your name',
+        longDescription: 'Name analysis is based on traditional Chinese five-grid numerology. By analyzing the stroke count and character meanings of your name, calculate the five grids to interpret personality and fortune.',
+        features: ['Five-grid numerology', 'Stroke analysis', 'Character interpretation', 'Fortune influence'],
+        example: 'Enter your name like "Wang Xiaoming" for complete analysis',
+        backgroundImage: 'https://images.pexels.com/photos/1181316/pexels-photo-1181316.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        cardImages: [
+            'https://images.pexels.com/photos/1181316/pexels-photo-1181316.jpeg?auto=compress&cs=tinysrgb&w=400',
+            'https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=400',
+            'https://images.pexels.com/photos/1624438/pexels-photo-1624438.jpeg?auto=compress&cs=tinysrgb&w=400'
+        ]
     },
     {
         label: 'Dream Interpretation',
         key: 'dream',
+        icon: '🌙',
+        title: 'Dream Analysis',
+        description: 'Decode the mysterious messages in your dreams',
+        longDescription: 'Dream interpretation is an ancient Chinese system for understanding dream meanings. By analyzing people, scenes, and events in dreams, decode subconscious messages and future omens.',
+        features: ['Dream symbolism', 'Subconscious insights', 'Psychological hints', 'Future omens'],
+        example: 'Describe your dreams like "flying in the sky" or "swimming in water"',
+        backgroundImage: 'https://images.pexels.com/photos/1252814/pexels-photo-1252814.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        cardImages: [
+            'https://images.pexels.com/photos/1252814/pexels-photo-1252814.jpeg?auto=compress&cs=tinysrgb&w=400',
+            'https://images.pexels.com/photos/1252815/pexels-photo-1252815.jpeg?auto=compress&cs=tinysrgb&w=400',
+            'https://images.pexels.com/photos/1274260/pexels-photo-1274260.jpeg?auto=compress&cs=tinysrgb&w=400'
+        ]
     },
     {
-        label: 'Plum Blossom Divination',
+        label: 'I Ching Divination',
         key: 'plum_flower',
+        icon: '🌸',
+        title: 'Plum Blossom Oracle',
+        description: 'Use I Ching hexagrams to predict changes',
+        longDescription: 'Plum Blossom divination is a method based on I Ching principles. Using random numbers to generate hexagrams, analyze hexagram changes to predict development trends and fortune.',
+        features: ['I Ching hexagrams', 'Number-based divination', 'Hexagram analysis', 'Trend prediction'],
+        example: 'Randomly enter two numbers between 0-1000, like "123" and "456"',
+        backgroundImage: 'https://images.pexels.com/photos/1181316/pexels-photo-1181316.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        cardImages: [
+            'https://images.pexels.com/photos/1181316/pexels-photo-1181316.jpeg?auto=compress&cs=tinysrgb&w=400',
+            'https://images.pexels.com/photos/1624438/pexels-photo-1624438.jpeg?auto=compress&cs=tinysrgb&w=400',
+            'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=400'
+        ]
+    },
+    {
+        label: 'Flower Oracle',
+        key: 'flower_oracle',
+        icon: '🌸',
+        title: 'Flower Oracle Reading',
+        description: 'Receive guidance from the language of flowers',
+        longDescription: 'Flower Oracle is a gentle divination method that uses the symbolic meanings of flowers to provide insight and inspiration. By drawing a flower, you receive a message that reflects your current situation or question.',
+        features: ['Symbolic flower meanings', 'Gentle and positive guidance', 'Beautiful visual experience'],
+        example: 'Ask: "What flower energy is guiding me today?" or "What message do the flowers have for my love life?"',
+        backgroundImage: 'https://images.pexels.com/photos/462118/pexels-photo-462118.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        cardImages: [
+            'https://images.pexels.com/photos/462118/pexels-photo-462118.jpeg?auto=compress&cs=tinysrgb&w=400',
+            'https://images.pexels.com/photos/36753/flower-purple-lical-blosso.jpg?auto=compress&cs=tinysrgb&w=400',
+            'https://images.pexels.com/photos/36754/flower-purple-lical-blosso.jpg?auto=compress&cs=tinysrgb&w=400'
+        ]
     },
 ];
 
-export const ABOUT = `# About & Glossary
+export const ABOUT = `# About Fortune Telling & Terminology
 
-## Name Analysis (Wuge)
+## Name Analysis (Five-Grid Numerology)
 
-Name Wuge is a system of numerology based on names, used to analyze and infer an individual's personality traits, potential, fortune, etc. It believes that each Chinese character has specific sounds, meanings, and shapes. By comprehensively analyzing the five-element attributes, sound numbers, and meanings of each character in a name, it aims to reveal a person's destiny and character.
+Name Five-Grid is a numerological system based on names, used to analyze and infer an individual's personality traits, potential, fortune, etc. It believes that each Chinese character has specific sounds, meanings, and shapes. By comprehensively analyzing the five-element attributes, sound numbers, and meanings of each character in a name, it aims to reveal a person's destiny and character.
 
-Name Wuge usually includes the following elements:
-
-- The five-element attributes of the name: Each character corresponds to one of the five elements (Wood, Fire, Earth, Metal, Water). By analyzing the attributes of each character and their relationships, one's five-element characteristics and numerological attributes are inferred.
-
-- Sound numbers: Each Chinese character has a corresponding sound number, i.e., its pronunciation. Based on the sound numbers of each character in the name, combined with the five-element attributes, one's aura, personality tendencies, etc., are inferred.
-
-- Character meanings: Each Chinese character has a unique meaning. By analyzing the meaning of each character in the name, one can understand aspects of an individual's personality, talents, and life path.
-
-- The interplay of the five elements: Based on the principles of mutual generation and overcoming of the five elements, the relationships between characters in a name are analyzed to infer one's five-element balance and destiny trends.
-
-Based on the above elements, the Name Wuge system can provide some predictions and guidance regarding personal character, potential, career, marriage, health, etc. However, it should be noted that Name Wuge is just one method of numerology and does not completely determine a person's destiny. Personal growth and development are also influenced by various other factors, such as individual effort and environment. Therefore, the interpretation of Name Wuge can be taken as a reference and part of self-reflection, but it is not the sole determinant.
-
-## Plum Blossom Divination (Meihua Yishu)
+## Plum Blossom Divination (I Ching Oracle)
 
 Plum Blossom Divination, also known as Meihua Yi Shu, is an ancient Chinese method of divination used to predict future situations or gain insight into matters. It is based on the principles and symbolic system of the I Ching, combined with mathematical calculations, symbolic meanings, and intuitive perception.
 
-The core of Plum Blossom Divination is the application of the eight trigrams and sixty-four hexagrams. The eight trigrams are the basic symbols in the I Ching, composed of three continuous lines, each of which can be a yang line (solid) or a yin line (broken). The sixty-four hexagrams are formed by various combinations of the eight trigrams, with each hexagram having a specific meaning and symbolism.
+## Dream Interpretation
 
-In Plum Blossom Divination, a specific hexagram is obtained by tossing three coins or using plum blossom sticks. The interpretation and analysis are then carried out based on the meaning of the hexagram and related explanations. This includes the upper and lower trigrams of the hexagram, the line statements, the judgment, and other factors related to the individual's question or matter.
-
-Plum Blossom Divination is considered a wisdom system that transcends time and space, helping people understand the changes in themselves and the world around them, and providing a method for thinking and decision-making. It has been widely used in history for prediction, decision-making, and numerology, and is regarded as a mystical and useful tool. However, interpreting Plum Blossom Divination requires a certain amount of study and practice, and is usually done by experts or experienced individuals.
-
-## Dream Interpretation (Zhougong Jiemeng)
-
-Zhougong Jiemeng (Duke of Zhou's Interpretation of Dreams) is an ancient Chinese method of dream interpretation, traditionally attributed to the Duke of Zhou (Ji Dan), a famous statesman of the Western Zhou Dynasty and one of its founders. According to legend, the Duke of Zhou had the ability to interpret dreams, understanding the various symbols and images people saw in their sleep and providing corresponding explanations and guidance.
-
-The theoretical basis of Zhougong Jiemeng is to infer the meaning and omens of dreams based on the symbols, plots, and actions within them, believing that dreams are expressions of a person's inner activities and subconscious. According to different dream contents, Zhougong Jiemeng provides corresponding explanations and predictions, helping people understand the information in their dreams and some hints about the future.
-
-Zhougong Jiemeng held an important position in ancient Chinese culture and was widely used in various fields, including politics, officialdom, military, and family life. People often sought predictions and guidance for the future through Zhougong Jiemeng, as well as answers to their inner pursuits and questions.
-
-However, it should be noted that Zhougong Jiemeng falls into the category of folk superstition, and its explanations and predictions have no scientific basis, serving only for entertainment and reference. The interpretation of dreams also needs to be combined with an individual's specific situation and experiences, and one should not excessively rely on dream interpretation results to influence one's decisions and actions.
+Dream interpretation is an ancient Chinese method of understanding dreams, traditionally attributed to the Duke of Zhou (Ji Dan), a famous statesman of the Western Zhou Dynasty. According to legend, the Duke of Zhou had the ability to interpret dreams, understanding the various symbols and images people saw in their sleep and providing corresponding explanations and guidance.
 
 ## Tarot Cards
 
 Tarot cards are a tool of divination originating from Europe, often used for predicting the future, exploring the inner self, and providing guidance. It consists of a deck of 78 cards, each with a specific pattern and symbolic meaning.
 
-Tarot cards are believed to have originated in 15th-century Italy, initially not for divination but as a card game. However, over time, people began to use them for divination and spiritual exploration. Tarot cards gradually became popular in the late 18th and early 19th centuries, becoming an important tool in the spiritual and mystical fields.
-
-A standard deck of Tarot cards consists of two main parts: the Major Arcana and the Minor Arcana. The Major Arcana consists of 22 cards, each representing different symbols and themes, such as fate, strength, and justice. The Minor Arcana contains 56 cards, divided into four suits: Wands, Cups, Swords, and Pentacles, with each suit containing 10 numbered cards and 4 court cards.
-
-When using Tarot cards for divination, the diviner usually draws a certain number of cards from the deck based on the querent's question or purpose and interprets them according to the symbolic meaning of the cards. Each card has a unique meaning, and combined with the diviner's intuition and experience, it can provide insights into the past, present, and future, as well as reflections and guidance on one's inner world.
-
-It is important to note that Tarot cards are not a tool for predicting destiny but offer a way for reflection and guidance. The results and interpretations of a divination can vary depending on the individual's perspective, experience, and intuition. Therefore, when using Tarot cards, one should maintain an open mind and use them as a tool to inspire thought and explore the inner world, rather than treating them as absolute truth.
-
 ## Bazi (Eight Characters of Birth)
 
 Bazi calculation is a traditional Chinese numerology method, also known as Eight-Character numerology or Bazi fortune-telling. It is based on the lunar birth date and time, using eight characters to reveal information about an individual's destiny, personality traits, and fortune.
-
-The eight characters refer to the Heavenly Stems and Earthly Branches of the four units: year, month, day, and hour. The ten Heavenly Stems are Jia, Yi, Bing, Ding, Wu, Ji, Geng, Xin, Ren, Gui. The twelve Earthly Branches are represented by the twelve zodiac animals (Rat, Ox, Tiger, Rabbit, Dragon, Snake, Horse, Goat, Monkey, Rooster, Dog, Pig). The year pillar is derived from the Heavenly Stem and Earthly Branch of the birth year; the month, day, and hour pillars are derived from their respective Heavenly Stems and Earthly Branches.
-
-The process of generating the Bazi involves corresponding calculations and derivations of the Heavenly Stems and Earthly Branches. Once the Bazi is generated, it can be calculated and interpreted based on the combination and interplay of the eight characters, combined with numerological theory. By analyzing the five-element attributes of the Bazi, the yin-yang balance, and the generating and overcoming relationships of the Heavenly Stems and Earthly Branches, one can infer characteristics and trends in an individual's life path, career development, marital status, health, etc.
-
-Bazi calculation usually requires professional numerology software, books, or consultation with a numerologist. At the same time, Bazi is a complex field of study that requires in-depth learning and practice for accurate interpretation and understanding. Therefore, when undergoing a Bazi reading, it is advisable to seek the guidance and interpretation of a professional to obtain more accurate results and guidance.
 `;
 
 export default {}

@@ -7,6 +7,7 @@ from . import new_name
 from . import plum_flower
 from . import fate
 from . import horoscope
+from . import flower_oracle
 from .base import DivinationFactory
 
 import logging
