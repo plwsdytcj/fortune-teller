@@ -176,6 +176,9 @@ onMounted(async () => {
       <div class="header-ornament">◆ ◇ ◆</div>
     </div>
     <p class="section-description">Please select a divination type below to begin your reading.</p>
+    <div class="ad-center">
+      <div id="my-ad-slot" style="min-height: 120px;"></div>
+    </div>
 
     <div class="divination-content">
       <n-tabs v-model:value="prompt_type" type="card" animated placement="top" class="mystical-tabs">
