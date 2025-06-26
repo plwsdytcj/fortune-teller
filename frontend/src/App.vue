@@ -143,6 +143,10 @@ onMounted(async () => {
             </n-gi>
             <n-gi :span="4">
               <div class="main">
+                <!-- 广告位，主内容区最上方 -->
+                <div class="ad-center">
+                  <div id="my-ad-slot" style="min-height: 120px;"></div>
+                </div>
                 <div class="mystical-header">
                   <div class="header-ornament">◆ ◇ ◆</div>
                   <h1 class="main-title">Chinese Fortune Teller</h1>
@@ -193,7 +197,6 @@ onMounted(async () => {
                 </div>
 
                 <router-view></router-view>
-                <div id="my-ad-slot" style="min-height: 120px; margin: 24px 0;"></div>
               </div>
             </n-gi>
             <n-gi :span="1" v-if="!isMobile">
