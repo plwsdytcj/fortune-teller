@@ -193,7 +193,7 @@ onMounted(async () => {
                 </div>
 
                 <router-view></router-view>
-                <div id="my-ad-slot" style="margin: 24px 0;"></div>
+                <div id="my-ad-slot" style="min-height: 120px; margin: 24px 0;"></div>
               </div>
             </n-gi>
             <n-gi :span="1" v-if="!isMobile">
