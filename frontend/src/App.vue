@@ -65,6 +65,13 @@ onMounted(async () => {
     (window.adsbygoogle = window.adsbygoogle || []).push({});
     (window.adsbygoogle = window.adsbygoogle || []).push({});
   }
+  if (!document.getElementById('my-ad-script')) {
+    const script = document.createElement('script')
+    script.id = 'my-ad-script'
+    script.type = 'text/javascript'
+    script.src = '//pl27008502.profitableratecpm.com/78/54/89/78548974d6da00601feb22cead70491f.js'
+    document.body.appendChild(script)
+  }
 });
 </script>
 
@@ -186,6 +193,7 @@ onMounted(async () => {
                 </div>
 
                 <router-view></router-view>
+                <div id="my-ad-slot" style="margin: 24px 0;"></div>
               </div>
             </n-gi>
             <n-gi :span="1" v-if="!isMobile">
