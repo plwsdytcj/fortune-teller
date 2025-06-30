@@ -130,6 +130,15 @@ onMounted(async () => {
       </div>
     </div>
 
+    <div class="floating-celestial-bg">
+      <span class="celestial celestial-moon-full celestial-glow"></span>
+      <span class="celestial celestial-star1 celestial-glow">⭐</span>
+      <span class="celestial celestial-star2 celestial-glow">✨</span>
+      <span class="celestial celestial-star3">🌟</span>
+      <span class="celestial celestial-star4">🪐</span>
+      <span class="celestial celestial-star5">☁️</span>
+    </div>
+
     <n-config-provider :theme="theme" :theme-overrides="themeOverrides" :locale="enUS" :date-locale="dateEnUS">
       <n-spin description="Consulting the ancient wisdom..." :show="loading" class="mystical-loading">
         <n-global-style />
@@ -149,7 +158,8 @@ onMounted(async () => {
                 </div>
                 <div class="mystical-header">
                   <div class="header-ornament">◆ ◇ ◆</div>
-                  <h1 class="main-title">Chinese Fortune Teller</h1>
+                  <h1 class="main-title">Divination Today</h1>
+                  <div class="main-subtitle">Your One Hub to Get All Divinations</div>
                   <div class="subtitle">Ancient Wisdom • Modern Insights</div>
                   <div class="header-ornament">◆ ◇ ◆</div>
                 </div>
@@ -180,7 +190,7 @@ onMounted(async () => {
                     </n-button>
                     <n-button @click="router.push('/consulting')" class="mystical-btn nav-btn">
                       <span class="btn-icon">💬</span>
-                      Consulting
+                      Online Fengshui Consulting Session
                     </n-button>
                   </div>
                 </div>
@@ -543,10 +553,11 @@ onMounted(async () => {
 
 /* Header Styling */
 .mystical-header {
-  text-align: center;
-  padding: 2rem 0;
-  margin-bottom: 2rem;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2.5rem;
 }
 
 .header-ornament {
@@ -561,24 +572,34 @@ onMounted(async () => {
   font-family: 'Noto Serif SC', serif;
   font-size: 3.5rem;
   font-weight: 900;
-  background: linear-gradient(45deg, #d4af37, #ffd700, #d4af37);
-  background-size: 200% 200%;
+  background: linear-gradient(45deg, #ffd700, #fffbe6 60%, #ffd700);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin: 1rem 0;
-  text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
-  animation: gradientShift 4s ease-in-out infinite;
-  letter-spacing: 0.1em;
+  text-align: center;
+  margin: 0.5rem 0 0.2rem 0;
+  text-shadow: 0 0 24px #ffd70055, 0 2px 12px #fffbe688;
+  letter-spacing: 0.04em;
+}
+
+.main-subtitle {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.7rem;
+  font-weight: 500;
+  color: #fffbe6;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 12px #ffd70033;
 }
 
 .subtitle {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 1.2rem;
-  color: rgba(212, 175, 55, 0.8);
-  font-style: italic;
-  margin: 1rem 0;
-  letter-spacing: 0.2em;
+  font-size: 1.5rem;
+  color: #ffe066;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 /* Control Panel */
@@ -771,5 +792,61 @@ onMounted(async () => {
   .energy-streams {
     display: none;
   }
+}
+
+.floating-celestial-bg {
+  pointer-events: none;
+  position: fixed;
+  z-index: 0;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  overflow: hidden;
+}
+.celestial {
+  position: absolute;
+  opacity: 0.85;
+  filter: drop-shadow(0 0 18px #ffd700cc);
+  animation: float-celestial 16s ease-in-out infinite;
+}
+.celestial-moon-full {
+  top: 8%; left: 6%; width: 10rem; height: 10rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 60% 40%, #fff 80%, #e0e0e0 100%);
+  box-shadow: 0 0 80px 40px #fffbe6, 0 0 120px 60px #fffbe6cc, 0 0 200px 120px #ffd70044;
+  animation-delay: 0s;
+  display: inline-block;
+  content: '';
+  transition: opacity 0.5s cubic-bezier(.4,0,.2,1), filter 0.5s cubic-bezier(.4,0,.2,1);
+}
+.celestial-moon-full:hover {
+  opacity: 0;
+  filter: brightness(0.5) blur(8px);
+}
+.celestial-star1 {
+  top: 16%; left: 24%; font-size: 6.2rem; animation-delay: 1.5s;
+}
+.celestial-star2 {
+  top: 32%; left: 40%; font-size: 5rem; animation-delay: 3s;
+}
+.celestial-star3 {
+  top: 60%; right: 16%; font-size: 4.2rem; animation-delay: 6s;
+}
+.celestial-star4 {
+  bottom: 18%; right: 22%; font-size: 3.5rem; animation-delay: 8s;
+}
+.celestial-star5 {
+  top: 80%; left: 65%; font-size: 2.8rem; animation-delay: 10s;
+}
+.celestial-glow {
+  filter: drop-shadow(0 0 64px #fffbe6) drop-shadow(0 0 48px #ffd700cc) drop-shadow(0 0 16px #fffbe6);
+  animation: float-celestial 16s ease-in-out infinite, celestial-glow-pulse 2.5s ease-in-out infinite;
+}
+@keyframes float-celestial {
+  0% { transform: translateY(0) scale(1); opacity: 0.85; }
+  50% { transform: translateY(-48px) scale(1.12); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 0.85; }
+}
+@keyframes celestial-glow-pulse {
+  0%, 100% { filter: drop-shadow(0 0 64px #fffbe6) drop-shadow(0 0 48px #ffd700cc) drop-shadow(0 0 16px #fffbe6); }
+  50% { filter: drop-shadow(0 0 128px #fff) drop-shadow(0 0 96px #ffd700) drop-shadow(0 0 32px #fffbe6); }
 }
 </style>

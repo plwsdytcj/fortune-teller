@@ -1,20 +1,30 @@
 <template>
   <div class="consulting-container">
     <div class="consulting-card">
-      <h1 class="consulting-title">One-on-One Consulting Session</h1>
+      <h1 class="consulting-title">One-on-One FengShui Consulting Session</h1>
       <p class="consulting-desc">
-        Want personalized guidance or a private divination session? Book a one-on-one consulting session with our expert!
+        Want personalized FengShui guidance for your home, office, or life? Book a one-on-one FengShui consulting session with our expert!
       </p>
       <ul class="consulting-list">
-        <li>🌟 Tarot, astrology, dream interpretation, and more</li>
-        <li>🌟 Confidential and tailored to your needs</li>
-        <li>🌟 Online (Zoom/WeChat/WhatsApp) or email</li>
+        <li>🌟 FengShui for home, office, and business</li>
+        <li>🌟 Personalized energy flow and harmony analysis</li>
+        <li>🌟 Practical tips for prosperity, health, and well-being</li>
+        <li>🌟 Online (image.png/WeChat/WhatsApp) or email</li>
       </ul>
       <div class="consulting-contact">
         <p><b>Contact us:</b></p>
-        <p>Email: <a href="mailto:your@email.com">your@email.com</a></p>
-        <p>WeChat: <b>yourwechatid</b></p>
-        <p>WhatsApp: <b>+1234567890</b></p>
+        <p>Email: <a href="your@email.com">osulcj@email.com</a></p>
+        <p>WhatsApp: <b></b></p>
+        <div class="whatsapp-qr-section">
+          <img
+            src="/7101751253769_.pic.jpg"
+            alt="WhatsApp QR code for CJ Lin"
+            class="whatsapp-qr-img"
+          />
+          <div class="whatsapp-qr-caption">
+            Scan or upload this QR code using the WhatsApp camera to add me on WhatsApp
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -69,4 +79,23 @@
   margin-bottom: 1.5rem;
 }
 .consulting-contact a { color: #ffd700; }
+.whatsapp-qr-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.2rem;
+}
+.whatsapp-qr-img {
+  width: 220px;
+  max-width: 90vw;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px #0005;
+  margin-bottom: 0.5rem;
+}
+.whatsapp-qr-caption {
+  color: #b2ffb2;
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
 </style> 

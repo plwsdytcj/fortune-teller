@@ -603,7 +603,7 @@ onMounted(async () => {
 .mystical-tabs .n-tabs-tab {
   min-width: 220px;
   min-height: 80px;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-family: 'Noto Serif SC', serif;
   font-weight: 600;
   padding: 1.2rem 2.2rem 1.2rem 2.2rem;
@@ -626,10 +626,12 @@ onMounted(async () => {
   gap: 0.7rem;
   position: relative;
   z-index: 1;
+  font-size: 1.3rem;
+  font-weight: 600;
 }
 .mystical-tabs .n-tabs-tab__label::before {
   content: attr(data-icon);
-  font-size: 2.1rem;
+  font-size: 1.7rem;
   margin-right: 0.2rem;
   filter: drop-shadow(0 0 8px #ffd70055);
   transition: filter 0.2s;
@@ -639,7 +641,7 @@ onMounted(async () => {
   color: #ffd700 !important;
   border-color: #ffd700 !important;
   box-shadow: 0 8px 32px #ffd70055, 0 2px 8px #fffbe688;
-  font-weight: 800;
+  font-weight: 700;
 }
 .mystical-tabs .n-tabs-tab--active .n-tabs-tab__label::before {
   filter: drop-shadow(0 0 16px #ffd700cc);
