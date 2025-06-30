@@ -1,3 +1,5 @@
+# 请在本地运行 pnpm install 以自动生成/更新 lockfile，无需手动编辑。
+
 lockfileVersion: '9.0'
 
 settings:

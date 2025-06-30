@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@microsoft/fetch-event-source": "^2.0.1",
-    "@vueuse/core": "^13.1.0",
+    "@vueuse/core": "^10.9.0",
     "gray-matter": "^4.0.3",
     "lunar-javascript": "^1.7.2",
     "markdown-it": "^14.1.0",
@@ -27,7 +27,8 @@
     "@vitejs/plugin-vue": "^5.2.3",
     "vite": "^6.3.3",
     "vite-plugin-pwa": "^1.0.0",
-    "workbox-window": "^7.3.0"
+    "workbox-window": "^7.3.0",
+    "pnpm": "^9.0.0"
   },
   "packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39"
 }
