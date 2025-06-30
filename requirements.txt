@@ -7,3 +7,11 @@ requests==2.32.3
 uvicorn==0.34.0
 redis==5.2.1
 cachetools==5.5.2
+python-frontmatter
+markdown
+
+# 如有数据库可加：
+# sqlalchemy
+# asyncpg
+# aiomysql
+# 其他依赖根据实际项目补充

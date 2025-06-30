@@ -182,16 +182,16 @@ onMounted(async () => {
 
     <div class="divination-content">
       <n-tabs v-model:value="prompt_type" type="card" animated placement="top" class="mystical-tabs">
-        <template v-if="isMobile" #prefix>
+      <template v-if="isMobile" #prefix>
           <n-button @click="changeTab(-1)" class="tab-nav-btn">
             <span class="nav-icon">◀</span>
           </n-button>
-        </template>
-        <template v-if="isMobile" #suffix>
+      </template>
+      <template v-if="isMobile" #suffix>
           <n-button @click="changeTab(1)" class="tab-nav-btn">
             <span class="nav-icon">▶</span>
           </n-button>
-        </template>
+      </template>
         
         <n-tab-pane v-for="option in DIVINATION_OPTIONS" :name="option.key" :tab="''" >
           <template #tab>
@@ -206,7 +206,7 @@ onMounted(async () => {
                 <div class="icon-container">
                   <span class="function-icon">{{ option.icon }}</span>
                   <div class="icon-aura"></div>
-                </div>
+          </div>
                 <h3 class="function-title">{{ option.title }}</h3>
               </div>
               <p class="function-description">{{ option.description }}</p>
@@ -276,11 +276,11 @@ onMounted(async () => {
                 </div>
                 <n-form-item label="🎂 Birthday" label-placement="left" class="mystical-form-item">
                   <n-date-picker v-model:formatted-value="birthday" value-format="yyyy-MM-dd HH:mm:ss" type="datetime" class="mystical-date-picker" />
-                </n-form-item>
+              </n-form-item>
                 <n-form-item label="🌙 Lunar Date" label-placement="left" class="mystical-form-item">
                   <div class="lunar-display">{{ lunarBirthday }}</div>
-                </n-form-item>
-              </div>
+              </n-form-item>
+            </div>
               
               <div v-if="prompt_type == 'new_name'" class="input-group form-layout">
                 <div class="name-generator-visual">
@@ -289,22 +289,22 @@ onMounted(async () => {
                     <span class="char">字</span>
                     <span class="char">生</span>
                     <span class="char">成</span>
-                  </div>
+          </div>
                 </div>
                 <n-form-item label="👤 Surname" label-placement="left" class="mystical-form-item">
                   <n-input v-model:value="surname" type="text" maxlength="2" placeholder="Enter surname" class="mystical-input" />
-                </n-form-item>
+              </n-form-item>
                 <n-form-item label="⚧ Gender" label-placement="left" class="mystical-form-item">
                   <n-select v-model:value="sex" :options="[{label: '♂ Male', value: '男'}, {label: '♀ Female', value: '女'}]" class="mystical-select" />
-                </n-form-item>
+              </n-form-item>
                 <n-form-item label="🎂 Birthday" label-placement="left" class="mystical-form-item">
                   <n-date-picker v-model:formatted-value="birthday" value-format="yyyy-MM-dd HH:mm:ss" type="datetime" class="mystical-date-picker" />
-                </n-form-item>
+              </n-form-item>
                 <n-form-item label="💭 Additional Info" label-placement="left" class="mystical-form-item">
                   <n-input v-model:value="new_name_prompt" type="text" maxlength="20" placeholder="Any special preferences?" class="mystical-input" />
-                </n-form-item>
+              </n-form-item>
                 <div class="lunar-info">🌙 Lunar Date: {{ lunarBirthday }}</div>
-              </div>
+            </div>
               
               <div v-if="prompt_type == 'name'" class="input-group">
                 <div class="name-analysis-visual">
@@ -314,10 +314,10 @@ onMounted(async () => {
                     <div class="stroke-line"></div>
                     <div class="stroke-line"></div>
                     <div class="stroke-line"></div>
-                  </div>
-                </div>
+          </div>
+            </div>
                 <n-input v-model:value="prompt" type="text" maxlength="10" placeholder="Enter your name" class="mystical-input" />
-              </div>
+          </div>
               
               <div v-if="prompt_type == 'dream'" class="input-group">
                 <div class="dream-visual">
@@ -325,7 +325,7 @@ onMounted(async () => {
                     <span class="dream-symbol">💭</span>
                     <span class="dream-symbol">🌙</span>
                     <span class="dream-symbol">✨</span>
-                  </div>
+          </div>
                 </div>
                 <n-input v-model:value="prompt" type="textarea" :autosize="{ minRows: 3 }" maxlength="40"
                   placeholder="Please describe your dream in detail..." class="mystical-input" />
@@ -346,11 +346,11 @@ onMounted(async () => {
                 <h4 class="instruction-text">🎲 Please enter two random numbers between 0-1000</h4>
                 <n-form-item label="🔢 Number 1" label-placement="left" class="mystical-form-item">
                   <n-input-number v-model:value="plum_flower.num1" :min="0" :max="1000" class="mystical-number-input" />
-                </n-form-item>
+              </n-form-item>
                 <n-form-item label="🔢 Number 2" label-placement="left" class="mystical-form-item">
                   <n-input-number v-model:value="plum_flower.num2" :min="0" :max="1000" class="mystical-number-input" />
-                </n-form-item>
-              </div>
+              </n-form-item>
+            </div>
               
               <div v-if="prompt_type == 'fate'" class="input-group form-layout">
                 <div class="love-compatibility-visual">
@@ -358,17 +358,17 @@ onMounted(async () => {
                     <div class="heart heart-1">💖</div>
                     <div class="heart heart-2">💕</div>
                     <div class="connecting-line"></div>
-                  </div>
+          </div>
                 </div>
                 <h4 class="instruction-text">💫 Destiny is written in the stars, happiness is in your hands.</h4>
                 <p class="instruction-subtext">Want to know if you have a connection with them? Enter two names and discover your compatibility.</p>
                 <p class="instruction-example">For example: "John Smith" and "Jane Doe"</p>
                 <n-form-item label="👤 First Name" label-placement="left" class="mystical-form-item">
                   <n-input v-model:value="fate_body.name1" maxlength="40" placeholder="Enter first name" class="mystical-input" />
-                </n-form-item>
+              </n-form-item>
                 <n-form-item label="👤 Second Name" label-placement="left" class="mystical-form-item">
                   <n-input v-model:value="fate_body.name2" maxlength="40" placeholder="Enter second name" class="mystical-input" />
-                </n-form-item>
+              </n-form-item>
               </div>
 
               <div v-if="prompt_type == 'flower_oracle'" class="input-group">
@@ -379,8 +379,8 @@ onMounted(async () => {
                     <span class="flower-symbol">🌷</span>
                     <span class="flower-symbol">🌻</span>
                     <span class="flower-symbol">🌹</span>
-                  </div>
-                </div>
+            </div>
+          </div>
                 <n-input v-model:value="prompt" type="textarea" :autosize="{ minRows: 2 }" maxlength="40"
                   placeholder="What flower energy is guiding me today?" class="mystical-input" />
                 <div class="flower-oracle-tip">Tip: Ask about your day, love, or anything you wish gentle guidance for.</div>
@@ -441,14 +441,14 @@ onMounted(async () => {
                   </div>
                 </button>
               </div>
-            </div>
-          </n-card>
-        </n-tab-pane>
+          </div>
+        </n-card>
+      </n-tab-pane>
         
         <n-tab-pane name="about" tab="📚 About">
-          <About />
-        </n-tab-pane>
-      </n-tabs>
+        <About />
+      </n-tab-pane>
+    </n-tabs>
     </div>
     
     <!-- Results Drawer -->

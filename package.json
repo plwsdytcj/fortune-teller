@@ -1,5 +1,7 @@
 {
 	"dependencies": {
+		"front-matter": "^4.0.2",
+		"marked": "^16.0.0",
 		"vue-i18n": "^11.1.7"
 	}
 }

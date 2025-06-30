@@ -12,13 +12,16 @@
   "dependencies": {
     "@microsoft/fetch-event-source": "^2.0.1",
     "@vueuse/core": "^13.1.0",
+    "gray-matter": "^4.0.3",
     "lunar-javascript": "^1.7.2",
     "markdown-it": "^14.1.0",
+    "marked": "^9.1.2",
     "naive-ui": "2.41.0",
     "vooks": "^0.2.12",
     "vue": "^3.5.13",
     "vue-i18n": "^11.1.7",
-    "vue-router": "^4.5.1"
+    "vue-router": "^4.5.1",
+    "front-matter": "^4.0.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.3",

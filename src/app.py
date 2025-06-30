@@ -9,6 +9,7 @@ from fastapi.staticfiles import StaticFiles
 from src.limiter import get_real_ipaddr
 from src.chatgpt_router import router as chatgpt_router
 from src.user_router import router as user_router
+from src.blog import router as blog_router
 
 
 _logger = logging.getLogger(__name__)
@@ -24,6 +25,7 @@ app.add_middleware(
 
 app.include_router(chatgpt_router)
 app.include_router(user_router)
+app.include_router(blog_router, prefix="/api/v1")
 
 if os.path.exists("dist"):
     @app.get("/")

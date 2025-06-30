@@ -170,13 +170,17 @@ onMounted(async () => {
                       <span class="btn-icon">🏠</span>
                       Home
                     </n-button>
+                    <n-button @click="router.push('/blog')" class="mystical-btn nav-btn">
+                      <span class="btn-icon">📝</span>
+                      Blog
+                    </n-button>
                     <n-button @click="router.push('/settings')" class="mystical-btn nav-btn">
                       <span class="btn-icon">⚙️</span>
                       Settings
                     </n-button>
-                    <n-button @click="toggleDark()" class="mystical-btn theme-btn">
-                      <span class="btn-icon">{{ isDark ? '☀️' : '🌙' }}</span>
-                      {{ isDark ? 'Light' : 'Dark' }}
+                    <n-button @click="router.push('/consulting')" class="mystical-btn nav-btn">
+                      <span class="btn-icon">💬</span>
+                      Consulting
                     </n-button>
                   </div>
                 </div>
