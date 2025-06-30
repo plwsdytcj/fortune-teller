@@ -149,6 +149,16 @@ onMounted(async () => {
             </n-gi>
             <n-gi :span="4">
               <div class="main">
+                <!-- Direct Link Ad Banner -->
+                <a
+                  href="https://www.profitableratecpm.com/n3sirgrydd?key=42e88561bb8eac1885992f9b328639bc"
+                  class="direct-link-ad"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img src="https://www.profitableratecpm.com/banners/728x90.png" alt="Advertisement" style="max-width:100%;height:auto;display:block;margin:0 auto;" />
+                </a>
+                <!-- End Direct Link Ad Banner -->
                 <!-- 广告位，主内容区最上方 -->
                 <div class="ad-center">
                   <div id="my-ad-slot" style="min-height: 120px;"></div>
@@ -830,5 +840,19 @@ onMounted(async () => {
 @keyframes celestial-glow-pulse {
   0%, 100% { filter: drop-shadow(0 0 64px #fffbe6) drop-shadow(0 0 48px #ffd700cc) drop-shadow(0 0 16px #fffbe6); }
   50% { filter: drop-shadow(0 0 128px #fff) drop-shadow(0 0 96px #ffd700) drop-shadow(0 0 32px #fffbe6); }
+}
+
+.direct-link-ad {
+  display: block;
+  margin: 1.5rem auto 1.5rem auto;
+  max-width: 728px;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px #ffd70022, 0 1.5px 6px #fffbe655;
+  overflow: hidden;
+  background: #fffbe6;
+  transition: box-shadow 0.2s;
+}
+.direct-link-ad:hover {
+  box-shadow: 0 8px 32px #ffd70055, 0 2px 8px #fffbe688;
 }
 </style>
