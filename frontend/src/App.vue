@@ -132,9 +132,6 @@ onMounted(async () => {
 
     <div class="floating-celestial-bg">
       <span class="celestial celestial-moon-full celestial-glow"></span>
-      <span class="celestial celestial-star1 celestial-glow">⭐</span>
-      <span class="celestial celestial-star2 celestial-glow">✨</span>
-      <span class="celestial celestial-star3">🌟</span>
       <span class="celestial celestial-star4">🪐</span>
       <span class="celestial celestial-star5">☁️</span>
     </div>
@@ -820,21 +817,6 @@ onMounted(async () => {
 .celestial-moon-full:hover {
   opacity: 0;
   filter: brightness(0.5) blur(8px);
-}
-.celestial-star1 {
-  top: 16%; left: 24%; font-size: 6.2rem; animation-delay: 1.5s;
-}
-.celestial-star2 {
-  top: 32%; left: 40%; font-size: 5rem; animation-delay: 3s;
-}
-.celestial-star3 {
-  top: 60%; right: 16%; font-size: 4.2rem; animation-delay: 6s;
-}
-.celestial-star4 {
-  bottom: 18%; right: 22%; font-size: 3.5rem; animation-delay: 8s;
-}
-.celestial-star5 {
-  top: 80%; left: 65%; font-size: 2.8rem; animation-delay: 10s;
 }
 .celestial-glow {
   filter: drop-shadow(0 0 64px #fffbe6) drop-shadow(0 0 48px #ffd700cc) drop-shadow(0 0 16px #fffbe6);
