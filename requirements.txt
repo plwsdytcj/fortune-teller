@@ -4,6 +4,7 @@ python-frontmatter
 markdown
 pydantic
 redis
+pydantic_settings
 # 如有数据库可加：
 # sqlalchemy
 # asyncpg
