@@ -3,6 +3,7 @@ uvicorn
 python-frontmatter
 markdown
 pydantic
+redis
 # 如有数据库可加：
 # sqlalchemy
 # asyncpg
