@@ -1,7 +1,7 @@
 
 ```
 
-RUN
+RUN Folloiwng
 
 ```bash
 cd frontend
