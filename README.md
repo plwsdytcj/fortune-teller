@@ -1,7 +1,7 @@
 
 # ChatGPT Tarot Divination
 
-A modern web application that combines AI-powered divination with traditional tarot reading practices. Built with FastAPI backend and Vue.js frontend.
+ALI MODIFYA modern web application that combines AI-powered divination with traditional tarot reading practices. Built with FastAPI backend and Vue.js frontend.
 
 ## Features
 
