@@ -1,9 +1,17 @@
 <script setup>
 import {
-  NGrid, NGi, NSpace, NAlert, NButton, NMessageProvider, NPageHeader,
-  NConfigProvider, NGlobalStyle, NBackTop, darkTheme, NSpin, enUS, dateEnUS
+  NAlert,
+  NButton,
+  NMessageProvider,
+  NConfigProvider,
+  NGlobalStyle,
+  NBackTop,
+  darkTheme,
+  NSpin,
+  enUS,
+  dateEnUS
 } from 'naive-ui'
-import { onMounted, ref, computed } from "vue";
+import { onMounted, ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStorage } from '@vueuse/core'
 import { useIsMobile } from './utils/composables'
@@ -15,55 +23,55 @@ const isMobile = useIsMobile()
 
 const themeOverrides = {
   common: {
-    primaryColor: '#d4af37',
-    primaryColorHover: '#b8941f',
-    primaryColorPressed: '#9c7a1a',
-    borderRadius: '12px',
-    fontFamily: '"Noto Serif SC", "Ma Shan Zheng", serif',
+    primaryColor: '#7c3aed',
+    primaryColorHover: '#6d28d9',
+    primaryColorPressed: '#5b21b6',
+    primaryColorSuppl: '#8b5cf6',
+    borderRadius: '14px',
+    fontFamily: '"Inter", "Segoe UI", sans-serif'
   }
 }
 
-const theme = computed(() => isDark.value ? darkTheme : null)
+const theme = computed(() => (isDark.value ? darkTheme : null))
 
 const router = useRouter()
-const settings = ref({});
-const loading = ref(false);
+const settings = ref({})
+const loading = ref(false)
 
-const API_BASE = import.meta.env.VITE_API_BASE || "";
+const API_BASE = import.meta.env.VITE_API_BASE || ''
 
 const logOut = () => {
-  state_jwt.value = "";
-  router.go(0);
-};
+  state_jwt.value = ''
+  router.go(0)
+}
 
 const fetchSettings = async () => {
-  loading.value = true;
+  loading.value = true
   try {
     const response = await fetch(`${API_BASE}/api/v1/settings`, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        "Authorization": `Bearer ${state_jwt.value || "xxx"}`,
-        "Content-Type": "application/json"
-      },
-    });
+        Authorization: `Bearer ${state_jwt.value || 'xxx'}`,
+        'Content-Type': 'application/json'
+      }
+    })
     if (response.ok) {
-      settings.value = await response.json();
+      settings.value = await response.json()
     }
   } catch (error) {
-    console.error(error);
-  }
-  finally {
-    loading.value = false;
+    console.error(error)
+  } finally {
+    loading.value = false
   }
 }
 
-const showAd = computed(() => !isMobile.value && settings.value.ad_client);
+const showAd = computed(() => !isMobile.value && settings.value.ad_client)
 
 onMounted(async () => {
-  await fetchSettings();
+  await fetchSettings()
   if (!isMobile.value && settings.value.ad_client) {
-    (window.adsbygoogle = window.adsbygoogle || []).push({});
-    (window.adsbygoogle = window.adsbygoogle || []).push({});
+    (window.adsbygoogle = window.adsbygoogle || []).push({})
+    (window.adsbygoogle = window.adsbygoogle || []).push({})
   }
   if (!document.getElementById('my-ad-script')) {
     const script = document.createElement('script')
@@ -72,787 +80,499 @@ onMounted(async () => {
     script.src = '//pl27008502.profitableratecpm.com/78/54/89/78548974d6da00601feb22cead70491f.js'
     document.body.appendChild(script)
   }
-});
+})
 </script>
 
 <template>
-  <div class="app-container">
-    <!-- Enhanced Zen Background Effects -->
-    <div class="zen-background">
-      <!-- Animated Particles -->
-      <div class="floating-particles"></div>
-      
-      <!-- Mystical Orbs -->
-      <div class="mystical-orbs">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
-        <div class="orb orb-4"></div>
-      </div>
-      
-      <!-- Energy Streams -->
-      <div class="energy-streams">
-        <div class="stream stream-1"></div>
-        <div class="stream stream-2"></div>
-        <div class="stream stream-3"></div>
-      </div>
-      
-      <!-- Mystical Glow -->
-      <div class="mystical-glow"></div>
-      
-      <!-- Zen Circles -->
-      <div class="zen-circles">
-        <div class="zen-circle zen-circle-1"></div>
-        <div class="zen-circle zen-circle-2"></div>
-        <div class="zen-circle zen-circle-3"></div>
-        <div class="zen-circle zen-circle-4"></div>
-      </div>
-      
-      <!-- Sacred Geometry -->
-      <div class="sacred-geometry">
-        <div class="geometry-shape triangle-1"></div>
-        <div class="geometry-shape triangle-2"></div>
-        <div class="geometry-shape hexagon-1"></div>
-        <div class="geometry-shape hexagon-2"></div>
-      </div>
-      
-      <!-- Constellation Effect -->
-      <div class="constellation">
-        <div class="star star-1"></div>
-        <div class="star star-2"></div>
-        <div class="star star-3"></div>
-        <div class="star star-4"></div>
-        <div class="star star-5"></div>
-        <div class="star star-6"></div>
-        <div class="connecting-line line-1"></div>
-        <div class="connecting-line line-2"></div>
-        <div class="connecting-line line-3"></div>
-      </div>
-    </div>
-
-    <div class="floating-celestial-bg">
-      <span class="celestial celestial-moon-full celestial-glow"></span>
-      <span class="celestial celestial-star4">🪐</span>
-      <span class="celestial celestial-star5">☁️</span>
-    </div>
-
+  <div class="app-shell">
+    <div class="background-gradient"></div>
     <n-config-provider :theme="theme" :theme-overrides="themeOverrides" :locale="enUS" :date-locale="dateEnUS">
-      <n-spin description="Consulting the ancient wisdom..." :show="loading" class="mystical-loading">
+      <n-spin description="Consulting the ancient wisdom..." :show="loading" class="app-loading">
         <n-global-style />
         <n-message-provider>
-          <n-grid :x-gap="12" :cols="isMobile ? 4 : 6">
-            <n-gi :span="1">
-              <div class="side" v-if="showAd">
-                <ins class="adsbygoogle" style="display:block" :data-ad-client="settings.ad_client"
-                  :data-ad-slot="settings.ad_slot" data-ad-format="auto" data-full-width-responsive="true"></ins>
+          <div class="layout-shell">
+            <aside v-if="showAd" class="ad-column">
+              <div class="ad-surface">
+                <ins
+                  class="adsbygoogle"
+                  style="display:block"
+                  :data-ad-client="settings.ad_client"
+                  :data-ad-slot="settings.ad_slot"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"
+                ></ins>
               </div>
-            </n-gi>
-            <n-gi :span="4">
-              <div class="main">
-                <!-- Direct Link Ad Banner -->
+            </aside>
+
+            <main class="main-column">
+              <header class="top-bar">
+                <div class="brand">
+                  <span class="brand-icon">🔮</span>
+                  <div class="brand-copy">
+                    <h1>Divination Today</h1>
+                    <p>Ancient wisdom for curious minds</p>
+                  </div>
+                </div>
+                <div class="top-actions">
+                  <n-button quaternary class="action-btn" @click="toggleDark">
+                    <span class="btn-icon">{{ isDark ? '🌙' : '☀️' }}</span>
+                    {{ isDark ? 'Dark' : 'Light' }} mode
+                  </n-button>
+                  <template v-if="settings.enable_login">
+                    <n-button v-if="settings.user_name" quaternary class="action-btn" @click="logOut">
+                      <span class="btn-icon">🚪</span>
+                      Logout
+                    </n-button>
+                    <n-button v-else type="primary" class="action-btn" @click="router.push('/login')">
+                      <span class="btn-icon">🔑</span>
+                      Login
+                    </n-button>
+                  </template>
+                </div>
+              </header>
+
+              <section class="nav-card">
+                <div class="nav-buttons">
+                  <n-button class="nav-btn" @click="router.push('/')">
+                    <span class="btn-icon">🏠</span>
+                    Home
+                  </n-button>
+                  <n-button class="nav-btn" @click="router.push('/blog')">
+                    <span class="btn-icon">📝</span>
+                    Blog
+                  </n-button>
+                  <n-button class="nav-btn" @click="router.push('/settings')">
+                    <span class="btn-icon">⚙️</span>
+                    Settings
+                  </n-button>
+                  <n-button class="nav-btn" @click="router.push('/consulting')">
+                    <span class="btn-icon">💬</span>
+                    Consulting
+                  </n-button>
+                </div>
+              </section>
+
+              <section class="promo-area">
                 <a
                   href="https://www.profitableratecpm.com/n3sirgrydd?key=42e88561bb8eac1885992f9b328639bc"
-                  class="direct-link-ad"
+                  class="promo-banner"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <img src="https://www.profitableratecpm.com/banners/728x90.png" alt="Advertisement" style="max-width:100%;height:auto;display:block;margin:0 auto;" />
-                </a>
-                <!-- End Direct Link Ad Banner -->
-                <!-- 广告位，主内容区最上方 -->
-                <div class="ad-center">
-                  <div id="my-ad-slot" style="min-height: 120px;"></div>
-                </div>
-                <div class="mystical-header">
-                  <div class="header-ornament">◆ ◇ ◆</div>
-                  <h1 class="main-title">Divination Today</h1>
-                  <div class="main-subtitle">Your One Hub to Get All Divinations</div>
-                  <div class="subtitle">Ancient Wisdom • Modern Insights</div>
-                  <div class="header-ornament">◆ ◇ ◆</div>
-                </div>
-
-                <div class="control-panel">
-                  <div class="mystical-controls">
-                    <div v-if="settings.enable_login" class="auth-section">
-                      <n-button v-if="settings.user_name" @click="logOut" class="mystical-btn logout-btn">
-                        <span class="btn-icon">🚪</span>
-                        Logout
-                      </n-button>
-                      <n-button v-else type="primary" @click="router.push('/login')" class="mystical-btn login-btn">
-                        <span class="btn-icon">🔑</span>
-                        Login
-                      </n-button>
-                    </div>
-                    <n-button @click="router.push('/')" class="mystical-btn nav-btn">
-                      <span class="btn-icon">🏠</span>
-                      Home
-                    </n-button>
-                    <n-button @click="router.push('/blog')" class="mystical-btn nav-btn">
-                      <span class="btn-icon">📝</span>
-                      Blog
-                    </n-button>
-                    <n-button @click="router.push('/settings')" class="mystical-btn nav-btn">
-                      <span class="btn-icon">⚙️</span>
-                      Settings
-                    </n-button>
-                    <n-button @click="router.push('/consulting')" class="mystical-btn nav-btn">
-                      <span class="btn-icon">💬</span>
-                      Online Fengshui Consulting Session
-                    </n-button>
+                  <div class="promo-copy">
+                    <span class="eyebrow">Sponsored</span>
+                    <h2>Curated offers for seekers</h2>
+                    <p>Discover partners that complement your spiritual journey.</p>
                   </div>
-                </div>
+                  <img
+                    src="https://www.profitableratecpm.com/banners/728x90.png"
+                    alt="Advertisement"
+                    loading="lazy"
+                  />
+                </a>
+              </section>
 
-                <div class="status-alerts">
-                  <n-alert v-if="settings.user_name" type="success" class="mystical-alert success-alert">
-                    <div class="alert-content">
-                      <span class="alert-icon">🌟</span>
-                      Welcome, {{ settings.login_type }} user {{ settings.user_name }}
-                    </div>
-                  </n-alert>
-                  <n-alert v-else-if="settings.enable_login && settings.enable_rate_limit" type="warning" class="mystical-alert warning-alert">
-                    <div class="alert-content">
-                      <span class="alert-icon">⚠️</span>
-                      Not logged in - rate limited mode ({{ settings.rate_limit }})
-                    </div>
-                  </n-alert>
-                </div>
+              <div class="ad-placeholder">
+                <div id="my-ad-slot"></div>
+              </div>
 
-                <router-view></router-view>
+              <section class="status-area">
+                <n-alert v-if="settings.user_name" type="success" class="status-alert">
+                  <div class="alert-content">
+                    <span class="alert-icon">🌟</span>
+                    Welcome, {{ settings.login_type }} user {{ settings.user_name }}
+                  </div>
+                </n-alert>
+                <n-alert
+                  v-else-if="settings.enable_login && settings.enable_rate_limit"
+                  type="warning"
+                  class="status-alert"
+                >
+                  <div class="alert-content">
+                    <span class="alert-icon">⚠️</span>
+                    Not logged in - rate limited mode ({{ settings.rate_limit }})
+                  </div>
+                </n-alert>
+              </section>
+
+              <section class="content-surface">
+                <router-view />
+              </section>
+            </main>
+
+            <aside v-if="showAd" class="ad-column">
+              <div class="ad-surface">
+                <ins
+                  class="adsbygoogle"
+                  style="display:block"
+                  :data-ad-client="settings.ad_client"
+                  :data-ad-slot="settings.ad_slot"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"
+                ></ins>
               </div>
-            </n-gi>
-            <n-gi :span="1" v-if="!isMobile">
-              <div class="side" v-if="showAd">
-                <ins class="adsbygoogle" style="display:block" :data-ad-client="settings.ad_client"
-                  :data-ad-slot="settings.ad_slot" data-ad-format="auto" data-full-width-responsive="true"></ins>
-              </div>
-            </n-gi>
-          </n-grid>
+            </aside>
+          </div>
         </n-message-provider>
-        <n-back-top class="mystical-back-top" />
+        <n-back-top class="back-top" />
       </n-spin>
     </n-config-provider>
   </div>
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&family=Ma+Shan+Zheng&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
 
-.app-container {
+:global(body) {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background-color: #020617;
+  color: #e2e8f0;
+  margin: 0;
+}
+
+.app-shell {
+  position: relative;
   min-height: 100vh;
-  position: relative;
   overflow-x: hidden;
-  background: radial-gradient(ellipse at center, #0a0a1a 0%, #1a1a2e 30%, #16213e 60%, #0f3460 100%);
+  color: #e2e8f0;
 }
 
-/* Enhanced Zen Background Effects */
-.zen-background {
+.background-gradient {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: -1;
-  overflow: hidden;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(99, 102, 241, 0.12), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(14, 165, 233, 0.12), transparent 60%),
+    radial-gradient(circle at bottom left, rgba(236, 72, 153, 0.1), transparent 65%);
+  z-index: -2;
 }
 
-.floating-particles {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    radial-gradient(2px 2px at 20px 30px, rgba(212, 175, 55, 0.4), transparent),
-    radial-gradient(2px 2px at 40px 70px, rgba(255, 215, 0, 0.3), transparent),
-    radial-gradient(1px 1px at 90px 40px, rgba(212, 175, 55, 0.5), transparent),
-    radial-gradient(1px 1px at 130px 80px, rgba(255, 215, 0, 0.4), transparent),
-    radial-gradient(2px 2px at 160px 30px, rgba(212, 175, 55, 0.3), transparent);
-  background-repeat: repeat;
-  background-size: 250px 250px;
-  animation: float 25s linear infinite;
-}
-
-.mystical-orbs {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.orb {
-  position: absolute;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.6), rgba(212, 175, 55, 0.1), transparent);
-  animation: orb-float 15s ease-in-out infinite;
-}
-
-.orb-1 {
-  width: 120px;
-  height: 120px;
-  top: 15%;
-  left: 10%;
-  animation-delay: 0s;
-}
-
-.orb-2 {
-  width: 80px;
-  height: 80px;
-  top: 60%;
-  right: 20%;
-  animation-delay: 3s;
-}
-
-.orb-3 {
-  width: 100px;
-  height: 100px;
-  bottom: 25%;
-  left: 30%;
-  animation-delay: 6s;
-}
-
-.orb-4 {
-  width: 60px;
-  height: 60px;
-  top: 40%;
-  right: 40%;
-  animation-delay: 9s;
-}
-
-.energy-streams {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.stream {
-  position: absolute;
-  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
-  animation: stream-flow 20s linear infinite;
-}
-
-.stream-1 {
-  width: 200px;
-  height: 2px;
-  top: 20%;
-  left: -200px;
-  animation-delay: 0s;
-}
-
-.stream-2 {
-  width: 300px;
-  height: 1px;
-  top: 50%;
-  left: -300px;
-  animation-delay: 7s;
-}
-
-.stream-3 {
-  width: 150px;
-  height: 2px;
-  top: 80%;
-  left: -150px;
-  animation-delay: 14s;
-}
-
-.mystical-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 1000px;
-  height: 1000px;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, rgba(255, 215, 0, 0.05) 30%, transparent 70%);
-  transform: translate(-50%, -50%);
-  animation: pulse 12s ease-in-out infinite;
-}
-
-.zen-circles {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.zen-circle {
-  position: absolute;
-  border: 1px solid rgba(212, 175, 55, 0.15);
-  border-radius: 50%;
-  animation: rotate 40s linear infinite;
-}
-
-.zen-circle-1 {
-  width: 400px;
-  height: 400px;
-  top: 10%;
-  left: 5%;
-  animation-duration: 30s;
-}
-
-.zen-circle-2 {
-  width: 250px;
-  height: 250px;
-  top: 50%;
-  right: 10%;
-  animation-duration: 45s;
-  animation-direction: reverse;
-}
-
-.zen-circle-3 {
-  width: 180px;
-  height: 180px;
-  bottom: 15%;
-  left: 40%;
-  animation-duration: 35s;
-}
-
-.zen-circle-4 {
-  width: 320px;
-  height: 320px;
-  top: 30%;
-  right: 30%;
-  animation-duration: 50s;
-  animation-direction: reverse;
-}
-
-.sacred-geometry {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.geometry-shape {
-  position: absolute;
-  border: 1px solid rgba(212, 175, 55, 0.2);
-  animation: geometry-rotate 25s linear infinite;
-}
-
-.triangle-1 {
-  width: 0;
-  height: 0;
-  border-left: 30px solid transparent;
-  border-right: 30px solid transparent;
-  border-bottom: 52px solid rgba(212, 175, 55, 0.1);
-  top: 25%;
-  left: 20%;
-  animation-delay: 0s;
-}
-
-.triangle-2 {
-  width: 0;
-  height: 0;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-bottom: 35px solid rgba(212, 175, 55, 0.1);
-  bottom: 30%;
-  right: 25%;
-  animation-delay: 8s;
-  animation-direction: reverse;
-}
-
-.hexagon-1 {
-  width: 40px;
-  height: 23px;
-  background: rgba(212, 175, 55, 0.1);
-  position: relative;
-  top: 40%;
-  left: 70%;
-  animation-delay: 4s;
-}
-
-.hexagon-1:before,
-.hexagon-1:after {
-  content: "";
-  position: absolute;
-  width: 0;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-}
-
-.hexagon-1:before {
-  bottom: 100%;
-  border-bottom: 12px solid rgba(212, 175, 55, 0.1);
-}
-
-.hexagon-1:after {
-  top: 100%;
-  border-top: 12px solid rgba(212, 175, 55, 0.1);
-}
-
-.hexagon-2 {
-  width: 30px;
-  height: 17px;
-  background: rgba(212, 175, 55, 0.1);
-  position: relative;
-  top: 70%;
-  left: 15%;
-  animation-delay: 12s;
-  animation-direction: reverse;
-}
-
-.hexagon-2:before,
-.hexagon-2:after {
-  content: "";
-  position: absolute;
-  width: 0;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-}
-
-.hexagon-2:before {
-  bottom: 100%;
-  border-bottom: 9px solid rgba(212, 175, 55, 0.1);
-}
-
-.hexagon-2:after {
-  top: 100%;
-  border-top: 9px solid rgba(212, 175, 55, 0.1);
-}
-
-.constellation {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.star {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: #d4af37;
-  border-radius: 50%;
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
-  animation: star-twinkle 3s ease-in-out infinite;
-}
-
-.star-1 { top: 20%; left: 30%; animation-delay: 0s; }
-.star-2 { top: 25%; left: 45%; animation-delay: 0.5s; }
-.star-3 { top: 35%; left: 40%; animation-delay: 1s; }
-.star-4 { top: 30%; left: 55%; animation-delay: 1.5s; }
-.star-5 { top: 40%; left: 50%; animation-delay: 2s; }
-.star-6 { top: 45%; left: 35%; animation-delay: 2.5s; }
-
-.connecting-line {
-  position: absolute;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
-  animation: line-glow 4s ease-in-out infinite;
-}
-
-.line-1 {
-  width: 80px;
-  top: 22.5%;
-  left: 32%;
-  transform: rotate(25deg);
-  animation-delay: 0s;
-}
-
-.line-2 {
-  width: 60px;
-  top: 32.5%;
-  left: 42%;
-  transform: rotate(-15deg);
-  animation-delay: 1s;
-}
-
-.line-3 {
-  width: 70px;
-  top: 37.5%;
-  left: 47%;
-  transform: rotate(45deg);
-  animation-delay: 2s;
-}
-
-/* Header Styling */
-.mystical-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 2.5rem;
-}
-
-.header-ornament {
-  color: #d4af37;
-  font-size: 1.5rem;
-  margin: 1rem 0;
-  opacity: 0.8;
-  animation: shimmer 3s ease-in-out infinite;
-}
-
-.main-title {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 3.5rem;
-  font-weight: 900;
-  background: linear-gradient(45deg, #ffd700, #fffbe6 60%, #ffd700);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-align: center;
-  margin: 0.5rem 0 0.2rem 0;
-  text-shadow: 0 0 24px #ffd70055, 0 2px 12px #fffbe688;
-  letter-spacing: 0.04em;
-}
-
-.main-subtitle {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 1.7rem;
-  font-weight: 500;
-  color: #fffbe6;
-  text-align: center;
-  margin-bottom: 0.5rem;
-  letter-spacing: 0.02em;
-  text-shadow: 0 0 12px #ffd70033;
-}
-
-.subtitle {
-  font-size: 1.5rem;
-  color: #ffe066;
-  text-align: center;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-
-/* Control Panel */
-.control-panel {
-  margin-bottom: 2rem;
-}
-
-.mystical-controls {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.mystical-btn {
-  background: rgba(10, 10, 30, 0.95) !important;
-  border: 3px solid #ffd700 !important;
-  color: #ffd700 !important;
-  padding: 1.2rem 2.8rem !important;
-  border-radius: 22px !important;
-  font-size: 2rem !important;
-  font-weight: 700 !important;
-  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.25), 0 2px 8px rgba(0,0,0,0.18);
-  transition: all 0.25s cubic-bezier(0.4,1,0.7,1.2);
-  position: relative;
-  overflow: hidden;
-}
-.mystical-btn::before {
+.background-gradient::before,
+.background-gradient::after {
   content: '';
   position: absolute;
-  inset: 0;
+  width: 540px;
+  height: 540px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.18), transparent 70%);
+  filter: blur(40px);
+  z-index: -1;
+}
+
+.background-gradient::before {
+  top: -120px;
+  left: -160px;
+}
+
+.background-gradient::after {
+  bottom: -180px;
+  right: -120px;
+}
+
+.layout-shell {
+  width: min(1200px, 100% - 48px);
+  margin: 0 auto;
+  padding: 80px 0 96px;
+  display: flex;
+  gap: 32px;
+  align-items: stretch;
+}
+
+.ad-column {
+  flex: 0 0 220px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.ad-surface {
+  width: 100%;
+  padding: 20px;
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 20px 60px rgba(8, 47, 73, 0.35);
+}
+
+.ad-surface ins {
+  display: block;
+  width: 100%;
+  min-height: 260px;
+}
+
+.main-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px 28px;
+  border-radius: 20px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(8, 47, 73, 0.35);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #f8fafc;
+  box-shadow: 0 12px 30px rgba(99, 102, 241, 0.5);
+}
+
+.brand-copy h1 {
+  margin: 0;
+  font-family: 'Playfair Display', 'Inter', serif;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+}
+
+.brand-copy p {
+  margin: 4px 0 0;
+  color: #cbd5f5;
+  font-size: 14px;
+}
+
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.action-btn {
+  --n-height: 38px;
+  --n-padding: 0 18px;
+  --n-border-radius: 999px;
+  --n-font-size: 14px;
+  --n-border: 1px solid transparent;
+  --n-color: rgba(148, 163, 184, 0.12);
+  --n-color-hover: rgba(148, 163, 184, 0.24);
+  --n-color-pressed: rgba(148, 163, 184, 0.32);
+  --n-text-color: #e2e8f0;
+  --n-text-color-hover: #ffffff;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.action-btn.n-button--primary-type {
+  --n-color: rgba(99, 102, 241, 0.95);
+  --n-color-hover: rgba(79, 70, 229, 1);
+  --n-color-pressed: rgba(55, 48, 163, 1);
+  --n-text-color: #f8fafc;
+  --n-text-color-hover: #f8fafc;
+  --n-border: none;
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+}
+
+.nav-card {
+  border-radius: 20px;
+  padding: 20px 24px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(18px);
+}
+
+.nav-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.nav-btn {
+  --n-height: 48px;
+  --n-border-radius: 16px;
+  --n-padding: 0 20px;
+  --n-font-size: 15px;
+  --n-color: rgba(148, 163, 184, 0.14);
+  --n-color-hover: rgba(99, 102, 241, 0.18);
+  --n-color-pressed: rgba(79, 70, 229, 0.25);
+  --n-text-color: #f8fafc;
+  --n-text-color-hover: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.promo-area {
   border-radius: 22px;
-  background: linear-gradient(120deg, rgba(255,215,0,0.18) 0%, rgba(255,255,255,0.12) 100%);
-  z-index: 0;
-  pointer-events: none;
-}
-.mystical-btn .btn-icon {
-  font-size: 2.2rem !important;
-  margin-right: 0.7rem;
-  filter: drop-shadow(0 0 8px #ffd70088);
-}
-.mystical-btn:hover {
-  background: linear-gradient(120deg, #ffd700 0%, #fffbe6 100%) !important;
-  color: #1a1a2e !important;
-  border-color: #fffbe6 !important;
-  box-shadow: 0 12px 40px #ffd70055, 0 4px 16px #fffbe688;
-  transform: translateY(-4px) scale(1.04);
-}
-.mystical-btn:hover .btn-icon {
-  filter: drop-shadow(0 0 16px #ffd700cc);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(18px);
+  padding: 24px;
 }
 
-/* Status Alerts */
-.status-alerts {
-  margin-bottom: 2rem;
+.promo-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  text-decoration: none;
+  color: inherit;
 }
 
-.mystical-alert {
-  background: rgba(0, 0, 0, 0.4) !important;
-  border: 1px solid rgba(212, 175, 55, 0.3) !important;
-  backdrop-filter: blur(10px);
-  border-radius: 12px;
-  margin-bottom: 1rem;
+.promo-copy {
+  flex: 1;
+  min-width: 220px;
+}
+
+.promo-copy .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(99, 102, 241, 0.18);
+  color: #cbd5f5;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.promo-copy h2 {
+  margin: 12px 0 8px;
+  font-family: 'Playfair Display', 'Inter', serif;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.promo-copy p {
+  margin: 0;
+  color: #cbd5f5;
+  line-height: 1.6;
+  max-width: 480px;
+}
+
+.promo-banner img {
+  flex: 0 0 240px;
+  width: 240px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.45);
+  background: rgba(148, 163, 184, 0.08);
+}
+
+.ad-placeholder {
+  border-radius: 20px;
+  border: 1px dashed rgba(148, 163, 184, 0.26);
+  background: rgba(15, 23, 42, 0.55);
+  padding: 16px;
+  min-height: 110px;
+}
+
+#my-ad-slot {
+  min-height: 90px;
+  width: 100%;
+}
+
+.status-area {
+  display: grid;
+  gap: 12px;
+}
+
+.status-alert {
+  --n-border-radius: 16px;
+  --n-padding: 16px 18px;
+  --n-font-size: 14px;
+}
+
+.status-alert :deep(.n-alert-body) {
+  align-items: center;
 }
 
 .alert-content {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  color: #d4af37;
-  font-family: 'Noto Serif SC', serif;
+  gap: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
 }
 
 .alert-icon {
-  font-size: 1.2rem;
+  font-size: 18px;
 }
 
-/* Loading Spinner */
-.mystical-loading {
-  --n-color: rgba(212, 175, 55, 0.8);
-  --n-text-color: #d4af37;
+.content-surface {
+  border-radius: 26px;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  background: rgba(10, 21, 41, 0.85);
+  backdrop-filter: blur(26px);
+  padding: 36px;
+  box-shadow: 0 25px 70px rgba(8, 47, 73, 0.45);
 }
 
-/* Back to Top */
-.mystical-back-top {
-  --n-color: rgba(0, 0, 0, 0.4);
-  --n-color-hover: rgba(212, 175, 55, 0.2);
-  --n-icon-color: #d4af37;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+.back-top {
+  --n-color: rgba(30, 41, 59, 0.85);
+  --n-color-hover: rgba(79, 70, 229, 0.7);
+  --n-icon-color: #f8fafc;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 163, 184, 0.2);
 }
 
-.side {
-  height: 100vh;
+.app-loading {
+  --n-color: rgba(15, 23, 42, 0.88);
+  --n-text-color: #e2e8f0;
 }
 
-.main {
-  min-height: 100vh;
-  text-align: center;
-  position: relative;
-  z-index: 1;
+.btn-icon {
+  font-size: 18px;
 }
 
-/* Enhanced Animations */
-@keyframes float {
-  0% { transform: translateY(0px) translateX(0px); }
-  25% { transform: translateY(-15px) translateX(8px); }
-  50% { transform: translateY(-8px) translateX(-5px); }
-  75% { transform: translateY(-12px) translateX(10px); }
-  100% { transform: translateY(0px) translateX(0px); }
-}
-
-@keyframes orb-float {
-  0%, 100% { transform: translateY(0px) scale(1); opacity: 0.6; }
-  33% { transform: translateY(-20px) scale(1.1); opacity: 0.8; }
-  66% { transform: translateY(10px) scale(0.9); opacity: 0.7; }
-}
-
-@keyframes stream-flow {
-  0% { left: -300px; opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { left: 100%; opacity: 0; }
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
-  50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
-}
-
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes geometry-rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes star-twinkle {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.3); }
-}
-
-@keyframes line-glow {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.8; }
-}
-
-@keyframes shimmer {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
-}
-
-@keyframes gradientShift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-  .main-title {
-    font-size: 2.5rem;
-  }
-  
-  .subtitle {
-    font-size: 1rem;
-  }
-  
-  .mystical-controls {
+@media (max-width: 1100px) {
+  .layout-shell {
     flex-direction: column;
-    align-items: center;
+    padding: 64px 0 80px;
   }
-  
-  .mystical-btn {
-    width: 200px;
-    justify-content: center;
-  }
-  
-  .zen-circle, .orb, .geometry-shape {
-    display: none;
-  }
-  
-  .constellation {
-    display: none;
-  }
-  
-  .energy-streams {
+
+  .ad-column {
     display: none;
   }
 }
 
-.floating-celestial-bg {
-  pointer-events: none;
-  position: fixed;
-  z-index: 0;
-  top: 0; left: 0; width: 100vw; height: 100vh;
-  overflow: hidden;
-}
-.celestial {
-  position: absolute;
-  opacity: 0.85;
-  filter: drop-shadow(0 0 18px #ffd700cc);
-  animation: float-celestial 16s ease-in-out infinite;
-}
-.celestial-moon-full {
-  top: 8%; left: 6%; width: 10rem; height: 10rem;
-  border-radius: 50%;
-  background: radial-gradient(circle at 60% 40%, #fff 80%, #e0e0e0 100%);
-  box-shadow: 0 0 80px 40px #fffbe6, 0 0 120px 60px #fffbe6cc, 0 0 200px 120px #ffd70044;
-  animation-delay: 0s;
-  display: inline-block;
-  content: '';
-  transition: opacity 0.5s cubic-bezier(.4,0,.2,1), filter 0.5s cubic-bezier(.4,0,.2,1);
-}
-.celestial-moon-full:hover {
-  opacity: 0;
-  filter: brightness(0.5) blur(8px);
-}
-.celestial-glow {
-  filter: drop-shadow(0 0 64px #fffbe6) drop-shadow(0 0 48px #ffd700cc) drop-shadow(0 0 16px #fffbe6);
-  animation: float-celestial 16s ease-in-out infinite, celestial-glow-pulse 2.5s ease-in-out infinite;
-}
-@keyframes float-celestial {
-  0% { transform: translateY(0) scale(1); opacity: 0.85; }
-  50% { transform: translateY(-48px) scale(1.12); opacity: 1; }
-  100% { transform: translateY(0) scale(1); opacity: 0.85; }
-}
-@keyframes celestial-glow-pulse {
-  0%, 100% { filter: drop-shadow(0 0 64px #fffbe6) drop-shadow(0 0 48px #ffd700cc) drop-shadow(0 0 16px #fffbe6); }
-  50% { filter: drop-shadow(0 0 128px #fff) drop-shadow(0 0 96px #ffd700) drop-shadow(0 0 32px #fffbe6); }
-}
+@media (max-width: 768px) {
+  .top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-.direct-link-ad {
-  display: block;
-  margin: 1.5rem auto 1.5rem auto;
-  max-width: 728px;
-  border-radius: 12px;
-  box-shadow: 0 4px 24px #ffd70022, 0 1.5px 6px #fffbe655;
-  overflow: hidden;
-  background: #fffbe6;
-  transition: box-shadow 0.2s;
-}
-.direct-link-ad:hover {
-  box-shadow: 0 8px 32px #ffd70055, 0 2px 8px #fffbe688;
+  .promo-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .promo-banner img {
+    width: 100%;
+    height: auto;
+  }
+
+  .content-surface {
+    padding: 24px;
+  }
 }
 </style>
